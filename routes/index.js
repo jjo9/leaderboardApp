@@ -27,13 +27,27 @@ router.get('/chartTesteHard', function(req,res,next) {
 
 router.get('/leaderBoardTesteHard', function(req,res,next) { 
     var info = {
-        telemoveis:[
-            {nomeMarca:'Xiaomi',
+        tabela:[
+            {nome:'jose@jose.com',
             pontos:20},
-            {nomeMarca:'Apple',
+            {nome:'pedro@pedro.com',
             pontos:10},
-            {nomeMarca:'Samsung',
-            pontos:25}
+            {nome:'martin@martin.com',
+            pontos:25},
+            {nome:'123@gmail.com',
+            pontos:30},
+            {nome:'marcos@martin.com',
+            pontos:5},
+            {nome:'silveira@martin.com',
+            pontos:0},
+            {nome:'david@martin.com',
+            pontos:0},
+            {nome:'mario@martin.com',
+            pontos:25},
+            {nome:'browser@martin.com',
+            pontos:25},
+            {nome:'peach@martin.com',
+            pontos:33}
         ]
     };
     res.render('leaderTestV1',info);  
