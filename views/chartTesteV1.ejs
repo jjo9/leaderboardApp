@@ -3,7 +3,56 @@
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
     var ctx = document.getElementById('myChart');
-    var myChart = new Chart(ctx, {
+    // este será o que vai apresentar linhas
+    // tenho que defenir como vai ser o .json dos dados !!!
+    //var data = [{x: 0.10,y: 0.20}, {x: 0.15,y: 0.10}];
+    //var data = [0.1,0.3];
+    var data =  {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: 'My First dataset',
+					//backgroundColor: window.chartColors.red,
+					//borderColor: window.chartColors.red,
+					data: [
+						11,
+						12,
+						32,
+						41,
+						14,
+						33,
+						23
+					],
+					fill: false,
+				}, {
+					label: 'My Second dataset',
+					fill: false,
+					//backgroundColor: window.chartColors.blue,
+					//borderColor: window.chartColors.blue,
+					data: [
+						12,
+						13,
+						31,
+						14,
+						16,
+						31,
+						
+					],
+				}]
+			};
+    var options = {
+        elements: {
+            line: {
+                tension: 0 // disables bezier curves
+            }
+        }
+    };
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+    // exemplo de barras
+    /*var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -38,5 +87,5 @@
                 }]
             }
         }
-    });
+    });*/
     </script>
