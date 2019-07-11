@@ -13,16 +13,14 @@ const router = express.Router();
 router.get('/', (req,res) => res.send('Welcome vou fazer graficos aqui com o mongo !!! amanhã !!!! charts.js'))
 
 router.get('/chartTesteHard', function(req,res,next) {
-    var dados = {
+    var info = {
         telemoveis:[
             {nomeMarca:'Xiaomi'},
             {nomeMarca:'Apple'},
             {nomeMarca:'Samsung'}
         ]
     };
-    res.render('chartTesteV1', {
-        info: dados
-    });  
+    res.render('chartTesteV1',info);  
 });
 
 router.get('/chartTesteMongo', function(req,res,next) {
