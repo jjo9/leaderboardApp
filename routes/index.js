@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+var Chart = require('chart.js');
 
 //var mongo = require('mongodb').MongoClient;
 //var objectId = require('mongodb').ObjectID;
@@ -13,6 +14,7 @@ const router = express.Router();
 router.get('/', (req,res) => res.send('Welcome vou fazer graficos aqui com o mongo !!! amanhã !!!! charts.js'))
 
 router.get('/chartTesteHard', function(req,res,next) {
+    
     var info = {
         telemoveis:[
             {nomeMarca:'Xiaomi'},
