@@ -11,7 +11,7 @@ var Chart = require('chart.js');
 // Telemovel model
 //const Telemovel = require('../models/Telemovel');
 
-router.get('/', (req,res) => res.send('Welcome vou fazer graficos aqui com o mongo !!! amanhã !!!! charts.js'))
+router.get('/', (req,res) => res.render('main'));
 
 router.get('/chartTesteHard', function(req,res,next) {
     
