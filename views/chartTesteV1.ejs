@@ -7,12 +7,23 @@
     // tenho que defenir como vai ser o .json dos dados !!!
     //var data = [{x: 0.10,y: 0.20}, {x: 0.15,y: 0.10}];
     //var data = [0.1,0.3];
+    window.chartColors = {
+      red: 'rgb(255, 99, 132)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgb(54, 162, 235)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(201, 203, 207)'
+    };
+
     var data =  {
 				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 				datasets: [{
-					label: 'My First dataset',
-					//backgroundColor: window.chartColors.red,
-					//borderColor: window.chartColors.red,
+                    label: 'User 1',
+                    fill: false,
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
 					data: [
 						11,
 						12,
@@ -22,12 +33,11 @@
 						33,
 						23
 					],
-					fill: false,
 				}, {
-					label: 'My Second dataset',
+					label: 'User 2',
 					fill: false,
-					//backgroundColor: window.chartColors.blue,
-					//borderColor: window.chartColors.blue,
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
 					data: [
 						12,
 						13,
