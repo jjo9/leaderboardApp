@@ -25,6 +25,22 @@ router.get('/chartTesteHard', function(req,res,next) {
     res.render('chartTesteV1',info);  
 });
 
+router.get('/leaderBoardTesteHard', function(req,res,next) { 
+    var info = {
+        telemoveis:[
+            {nomeMarca:'Xiaomi',
+            pontos:20},
+            {nomeMarca:'Apple',
+            pontos:10},
+            {nomeMarca:'Samsung',
+            pontos:25}
+        ]
+    };
+    res.render('leaderTestV1',info);  
+});
+
+// Mongo class -------
+
 router.get('/chartTesteMongo', function(req,res,next) {
     // o que tenho de fazer é ir buscar os telemoveis à BD !!!!!!
     //var resultArray = [];
