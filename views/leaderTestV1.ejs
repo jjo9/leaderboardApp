@@ -1,36 +1,69 @@
 <h1>Leaderboards (Top 5 ou 10)</h1>
 
 
-<% var motrarX = 5 %>
+<% var motrarX = 5 %> 
+/* quantos é que quero mostrar ? */
+
+/*
 <ul style="list-style-type:none;">
 <% for(var tt of tabela) { %>
     <li><b>User: </b><%= tt.nome %></li>
     <li><b>Pontos: </b><%= tt.pontos %></li>
     <br>
 <% } %>
+
 </ul>
+*/
 
-
+/* aqui faço sort da lista de objetos pelo atributo pontos */
 <% tabela = tabela.sort((a, b) => (a.pontos < b.pontos) ? 1 : -1) %>
 
-
+<!-- 
 <ul style="list-style-type:none;">
     <% for(var tt of tabela) { %>
         <li><b>User: </b><%= tt.nome %></li>
         <li><b>Pontos: </b><%= tt.pontos %></li>
         <br>
     <% } %>
-    </ul>
+</ul>
+-->
+<!-- https://bootswatch.com/journal/ -->
+<br><br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Posição</th>
+        <th scope="col">Username</th>
+        <th scope="col">Pontos</th>
+        <th scope="col">Total perguntas resolvidas</th>
+      </tr>
+    </thead>
+    <tbody>
+<% for(var tt of tabela) { %>   
+    <!-- <% for( var i = 0; i < tabela.length - 1; i++) { %> -->
+    <tr>
+        <th scope="row">Active</th>
+        <td><%= tt.nome %></td>
+        <td><%= tt.pontos %></td>
+        <td>not implemented yet...</td>
+    </tr>
 
-<!-- fazer cena para mostrar tabela de leader boar e assim aqui!!!-->
+<% } %>
+
+  </tbody>
+</table> 
+
+<!-- 
+
+<br><br><br><br><br>
 
 <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
+        <th scope="col">Posição</th>
+        <th scope="col">Username</th>
+        <th scope="col">Pontos</th>
+        <th scope="col">Total perguntas resolvidas</th>
       </tr>
     </thead>
     <tbody>
@@ -38,7 +71,7 @@
         <th scope="row">Active</th>
         <td>Column content</td>
         <td>Column content</td>
-        <td>Column content</td>
+        <td>not implemented yet...</td>
       </tr>
       <tr>
         <th scope="row">Default</th>
@@ -96,3 +129,4 @@
       </tr>
     </tbody>
   </table> 
+  -->
