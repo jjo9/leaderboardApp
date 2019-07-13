@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 var Chart = require('chart.js');
 
-//var mongo = require('mongodb').MongoClient;
-//var objectId = require('mongodb').ObjectID;
-//var assert = require('assert');
+var mongo = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectID;
+var assert = require('assert');
 
-//var url = 'mongodb://localhost:27017/chartTeste';
+var url = 'mongodb://localhost:27017/ctfUsers';
 
-// Telemovel model
-//const Telemovel = require('../models/Telemovel');
+// User model
+const User = require('../models/User');
 
 router.get('/', (req,res) => res.render('main'));
 
@@ -55,23 +55,20 @@ router.get('/leaderBoardTesteHard', function(req,res,next) {
 
 // Mongo class -------
 
-router.get('/chartTesteMongo', function(req,res,next) {
-    // o que tenho de fazer é ir buscar os telemoveis à BD !!!!!!
-    //var resultArray = [];
+router.get('/leaderboardTesteMongo', function(req,res,next) {
 
-      Telemovel.find((err,users) => {
+      User.find((err,tabela) => {
         if(err){
             next(err);
-        }else{
-            //res.json(users);
-            //resultArray = users.slice();
-            //console.log(users);
-            res.render('telemoveisAvendaSemLogin', {
-                telemoveisV2: users
+        } else {
+            res.render('leaderTestV1', {
+                tabela
             });
         }
     });
     
 });
+
+
 
 module.exports = router;
