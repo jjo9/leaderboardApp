@@ -1,6 +1,13 @@
 <h1>Leaderboards (Top 10)</h1>
 
 <% var mostrarX = 10; %> 
+<% var totalDePerguntasExistentes = 30 %>
+<% var totalDepontosQuePossoGanhar = 35 %>
+
+<h2> ok tenho o total de perguntas mas o que estou a alimentar é o total de pontos ...
+deveria antes ter total de pontos que se podem ter ??? mas se implementar aquilo de os pontos diminuem não pode ser assim
+tenho que mandar as perguntas resolvidas e os pontos ganhos em cada um ?? </h2>
+
 <% tabela = tabela.sort((a, b) => (a.pontos < b.pontos) ? 1 : -1) ;%>
 
 <br><br>
@@ -11,6 +18,7 @@
         <th scope="col">Username</th>
         <th scope="col">Pontos</th>
         <th scope="col">Total perguntas resolvidas</th>
+        <th scope="col">Percentagem</th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +34,11 @@
         <td><%= tabela[i].nome %></td>
         <td><%= tabela[i].pontos %></td>
         <td>not implemented yet...</td>
+        <td><div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= tabela[i].pontos %>%;" aria-valuenow="<%= tabela[i].pontos %>" aria-valuemin="0" aria-valuemax="<%= totalDepontosQuePossoGanhar %>"></div>
+    </div></td>
     </tr>
+    
 
 <% } %>
 
