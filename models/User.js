@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 // a DB do mongo ctfUsers
-// db.users.insert( { nome: "jose@jose.com", pontos: 20 } )
+// db.users.insert( { nome: "martin@martin.com", pontos: 35 } )
 
 const User = mongoose.model('User',UserSchema);
 

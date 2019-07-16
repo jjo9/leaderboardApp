@@ -2,11 +2,13 @@
 
 <% var mostrarX = 10; %> 
 <% var totalDePerguntasExistentes = 30 %>
-<% var totalDepontosQuePossoGanhar = 35 %>
+<% var totalDepontosQuePossoGanhar = 40 %>
 
 <h2> ok tenho o total de perguntas mas o que estou a alimentar é o total de pontos ...
 deveria antes ter total de pontos que se podem ter ??? mas se implementar aquilo de os pontos diminuem não pode ser assim
 tenho que mandar as perguntas resolvidas e os pontos ganhos em cada um ?? </h2>
+
+<h4>Totla de pontos que se podem ganhar: <%= totalDepontosQuePossoGanhar%> </h4>
 
 <% tabela = tabela.sort((a, b) => (a.pontos < b.pontos) ? 1 : -1) ;%>
 
@@ -35,7 +37,8 @@ tenho que mandar as perguntas resolvidas e os pontos ganhos em cada um ?? </h2>
         <td><%= tabela[i].pontos %></td>
         <td>not implemented yet...</td>
         <td><div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: <%= tabela[i].pontos %>%;" aria-valuenow="<%= tabela[i].pontos %>" aria-valuemin="0" aria-valuemax="<%= totalDepontosQuePossoGanhar %>"></div>
+        <% var tempPercent = ( ( tabela[i].pontos *100)/ totalDepontosQuePossoGanhar);%>
+      <div class="progress-bar" role="progressbar" style="width: <%= tempPercent %>%;"  aria-valuemin="0" aria-valuemax="100"></div>
     </div></td>
     </tr>
     
