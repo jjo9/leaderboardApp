@@ -57,7 +57,7 @@ router.get('/leaderBoardTesteHard', function(req,res,next) {
 
 router.get('/leaderboardTesteMongo', function(req,res,next) {
 
-      User.find((err,tabela) => {
+      User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
         if(err){
             next(err);
         } else {
