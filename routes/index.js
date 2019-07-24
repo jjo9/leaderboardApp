@@ -8,6 +8,14 @@ var assert = require('assert');
 
 var url = 'mongodb://localhost:27017/ctfUsers';
 
+// para poder acessar ao que é enviado dentro do POST
+var bodyParser = require('body-parser')
+// create application/json parser
+var jsonParser = bodyParser.json()
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
 // User model
 const User = require('../models/User');
 
@@ -85,6 +93,24 @@ router.get('/mongoNewQueryTeste', function(req,res,next) {
           });
       }
   }).sort({ pontos: -1 }).limit(10);
+  
+});
+
+
+// encontrar users
+
+router.post('/findUser',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.body.username);
+    User.find({username:req.body.username},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          //console.log(tabela);
+          res.render('userInfo', {
+              tabela
+          });
+      }
+  });
   
 });
 

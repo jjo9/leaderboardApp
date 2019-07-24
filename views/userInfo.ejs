@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Home </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Features...</a>
@@ -29,22 +29,22 @@
   </div>
 </nav>
 
-<h1>Main Page</h1>
 
-<a href="http://192.168.36.3:8081/chartTesteHard">Ver Charts !!!</a>
-<br><br>
-<a href="http://192.168.36.3:8081/leaderBoardTesteHard">LeaderBoard !!!</a>
-
-<br><br>
-<a href="http://192.168.36.3:8081/leaderboardTesteMongo">A usar o MongoDB -> LeaderBoard !!!</a>
+<h1>User Info</h1>
 
 
-<br><br>
-<a href="http://192.168.36.3:8081/leaderboardTesteMongo">Ir buscar info de um user especifico</a>
-devo ser capaz de:
-ver desafios resolvidos (quais + quantidade)
-ver desafios criados (se tiver...) tenho que por isso no schema também
+<% if ( tabela.length == 0 ){ %>
+  <h2>O user não foi encontrado</h2>
+<% } else { %>
+  <% for ( var i = 0;  i < tabela.length; i++) { %>
+    <tr>
+        <th scope="row"> # <%= i+1 %> </th>
+        <td><%= tabela[i].username %></td>
+        <td><%= tabela[i].nome %></td>
+        <td><%= tabela[i].pontos %></td>
+        <td>not implemented yet...</td>
+    </div></td>
+    </tr>
+  <% } %>
 
-
-<br><br>
-<a href="http://192.168.36.3:8081/mongoNewQueryTeste">mongoNewQueryTeste</a>
+<% } %>
