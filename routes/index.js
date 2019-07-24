@@ -73,7 +73,9 @@ router.get('/leaderboardTesteMongo', function(req,res,next) {
 
 router.get('/mongoNewQueryTeste', function(req,res,next) {
     
-    User.find({nome:"jose@jose.com"},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+    //User.find({pontos:{"$gte": 30.0}},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+
+    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
       if(err){
           next(err);
       } else {
@@ -82,7 +84,7 @@ router.get('/mongoNewQueryTeste', function(req,res,next) {
               tabela
           });
       }
-  });
+  }).sort({ pontos: -1 }).limit(10);
   
 });
 
