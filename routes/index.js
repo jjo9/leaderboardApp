@@ -69,6 +69,22 @@ router.get('/leaderboardTesteMongo', function(req,res,next) {
     
 });
 
+// novo modo de fazer querys, antes eu fazia com o ejs para ver o top 5 agora procuro no mongo apenas o top 5
+
+router.get('/mongoNewQueryTeste', function(req,res,next) {
+    
+    User.find({nome:"jose@jose.com"},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela);
+          res.render('leaderTestV1', {
+              tabela
+          });
+      }
+  });
+  
+});
 
 
 module.exports = router;
