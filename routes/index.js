@@ -105,7 +105,7 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
       if(err){
           next(err);
       } else {
-          //console.log(tabela);
+          console.log(tabela);
           res.render('userInfo', {
               tabela
           });

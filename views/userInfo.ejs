@@ -6,7 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="#">Home </a>
       </li>
       <li class="nav-item">
@@ -15,8 +15,8 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Chalanges... (e mostra os desafios)</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">User... (e mostra os users todos)</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">User... (e mostra os users todos)<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
@@ -32,19 +32,43 @@
 
 <h1>User Info</h1>
 
-
 <% if ( tabela.length == 0 ){ %>
   <h2>O user não foi encontrado</h2>
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
+  <h2>ele tem a seguinte informação:</h2>
+  <ul>
     <tr>
-        <th scope="row"> # <%= i+1 %> </th>
-        <td><%= tabela[i].username %></td>
-        <td><%= tabela[i].nome %></td>
-        <td><%= tabela[i].pontos %></td>
-        <td>not implemented yet...</td>
-    </div></td>
+        <%= typeof tabela %>
+        <%= typeof tabela[0] %>
+        tabela[0].keys() 
+        <%= tabela[0]['username'] %>
+        <%= tabela.length %>
+        <td>#: <%= i %></td><br>
+        <td>email: <%= (tabela[i]).email %></td><br>
+        <td>username: <%= tabela[i].username %></td><br>
+        <td>pontos: <%= tabela[i].pontos %></td><br>
+        <td>perguntas Resolvidas: <%= tabela[i].perguntasResolvidas %></td><br>
+        <td>perguntas Enviadas: <%= tabela[i].perguntasEnviadas %></td><br>
+        <td>dataCriacao: <%= tabela[i].dataCriacao %></td><br>
+
+        <%= tabela.username %>
+        <%= tabela["username"] %>
+        <%= tabela[0]["username"] %>
+
+        <% var obj = tabela[0] %>
+  teste 2 :<br>
+        <%= obj %>
+        <%= obj["username"] %>
+        for looooooop: <br>
+        <% for(var prop in tabela[0]) { %>
+            <%= prop   %><br>
+            <%= tabela[prop] %><br>
+          <% } %>
+          <% var obj2 = JSON.parse(tabela[0]); %>
+          <%= obj2.username %>
     </tr>
+  </ul>
   <% } %>
 
 <% } %>
