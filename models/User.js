@@ -12,13 +12,20 @@ const UserSchema = new mongoose.Schema({
     pontos:{
         type: Number,
         required: true,
-        default: 0
+        default: 0.0
     },
-    resolvidos:{ // ponho este ?? vamos fazer com mongo ??
+    perguntasResolvidas:{
         type: Array,
         "default": [] 
+    },
+    perguntasEnviadas:{
+        type: Array,
+        "default": [] 
+    },
+    dataCriacao:{
+        type: Date
     }
-});
+});         // acabar isto depois !!!
 /*
 mydict = {"username": username,
 "email": email,

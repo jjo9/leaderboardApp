@@ -1,3 +1,13 @@
+<head>
+<style>
+
+
+.since {
+  float:right;
+} 
+</style>
+</head>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">CTF_Site_Name</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,39 +46,40 @@
   <h2>O user não foi encontrado</h2>
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
-  <h2>ele tem a seguinte informação:</h2>
-  <ul>
-    <tr>
-        <%= typeof tabela %>
-        <%= typeof tabela[0] %>
-        tabela[0].keys() 
-        <%= tabela[0]['username'] %>
-        <%= tabela.length %>
-        <td>#: <%= i %></td><br>
-        <td>email: <%= (tabela[i]).email %></td><br>
-        <td>username: <%= tabela[i].username %></td><br>
-        <td>pontos: <%= tabela[i].pontos %></td><br>
-        <td>perguntas Resolvidas: <%= tabela[i].perguntasResolvidas %></td><br>
-        <td>perguntas Enviadas: <%= tabela[i].perguntasEnviadas %></td><br>
-        <td>dataCriacao: <%= tabela[i].dataCriacao %></td><br>
+  <div class="jumbotron">
+  <h1 class="display-6" style="display: inline" ><strong>Username:</strong> <%= tabela[i].username %></h1> 
 
-        <%= tabela.username %>
-        <%= tabela["username"] %>
-        <%= tabela[0]["username"] %>
+<% var options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
 
-        <% var obj = tabela[0] %>
-  teste 2 :<br>
-        <%= obj %>
-        <%= obj["username"] %>
-        for looooooop: <br>
-        <% for(var prop in tabela[0]) { %>
-            <%= prop   %><br>
-            <%= tabela[prop] %><br>
-          <% } %>
-          <% var obj2 = JSON.parse(tabela[0]); %>
-          <%= obj2.username %>
-    </tr>
-  </ul>
+  <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
+
+  <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].pontos %></span></font>
+
+
+  <p class="lead">não vou mostrar o emai porque fica escondido ...</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Perguntas Resolvidas
+    <span class="badge badge-primary badge-pill"><%= tabela[i].perguntasResolvidas %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Perguntas Enviadas
+    <span class="badge badge-primary badge-pill"><%= tabela[i].perguntasEnviadas %></span>
+  </li>
+</ul>
+
+ tabela[i].perguntasEnviadas.length()
+        <td><strong>perguntas Resolvidas:</strong> </td><br>
+        <td><strong>perguntas Enviadas:</strong> </td><br>
+        <td><strong>dataCriacao:</strong> <%= tabela[i].dataCriacao.toLocaleString() %></td><br>
+  
+<h2>depois tenho que fazer algo para ver as perguntas e respostas... ou faço um drop down (mas se forem muitas não dá jeito...)... posso encaminhar para outra pagina ?...
+ posso por a mostra caixa e dá para fazer scroll ou vai de 5 em 5...</h2>
+
+</div>
+  
   <% } %>
 
 <% } %>
