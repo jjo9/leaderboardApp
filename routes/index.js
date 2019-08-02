@@ -19,6 +19,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // User model
 const User = require('../models/User');
 
+// Challange model
+const Challange = require('../models/Challange');
+
 router.get('/', (req,res) => res.render('main'));
 
 router.get('/chartTesteHard', function(req,res,next) {
@@ -78,7 +81,7 @@ router.get('/leaderboardTesteMongo', function(req,res,next) {
 });
 
 // novo modo de fazer querys, antes eu fazia com o ejs para ver o top 5 agora procuro no mongo apenas o top 5
-
+// mostra Top 10 Users
 router.get('/mongoNewQueryTeste', function(req,res,next) {
     
     //User.find({pontos:{"$gte": 30.0}},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
@@ -96,6 +99,22 @@ router.get('/mongoNewQueryTeste', function(req,res,next) {
   
 });
 
+// Mostra todos os Users
+
+router.get('/findAllUsers',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.body.username);
+    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela);
+          res.render('userInfo', {
+              tabela
+          });
+      }
+  });
+  
+});
 
 // encontrar users
 
@@ -114,5 +133,22 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
   
 });
 
+
+// encontrar Todos os Challanges
+
+router.get('/findChallenges',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.body.username);
+    Challange.find((err,tabela) => { 
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela);
+          res.render('challangeInfo', {
+              tabela
+          });
+      }
+  });
+  
+});
 
 module.exports = router;

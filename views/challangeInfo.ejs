@@ -22,11 +22,11 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Features...</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/findChallenges">Chalanges... (e mostra os desafios)</a>
-      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/findAllUsers">User... (e mostra os users todos)<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/findChallenges">Chalanges... (e mostra os desafios)<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/findAllUsers">User... (e mostra os users todos)</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
@@ -40,10 +40,10 @@
 </nav>
 
 
-<h1>User Info</h1>
+<h1>Challange Info</h1>
 
 <% if ( tabela.length == 0 ){ %>
-  <h2>O user não foi encontrado</h2>
+  <h2>O challange não foi encontrado</h2>
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
   <div class="jumbotron">
