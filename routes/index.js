@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-var Chart = require('chart.js');
+var Chart = require('chart.js'); // hahah no!
 
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;

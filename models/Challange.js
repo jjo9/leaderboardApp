@@ -41,9 +41,6 @@ const ChallangeSchema = new mongoose.Schema({
               }
 } */
 
-// a DB do mongo ctfUsers
-// db.users.insert( { nome: "martin@martin.com", pontos: 35 } )
-
 const Challange = mongoose.model('Challange',ChallangeSchema);
 
 module.exports = Challange;
