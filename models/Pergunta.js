@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ChallangeSchema = new mongoose.Schema({
+const PerguntaSchema = new mongoose.Schema({
     IDdesafio:{
         type: Number,
         required: true
@@ -41,6 +41,6 @@ const ChallangeSchema = new mongoose.Schema({
               }
 } */
 
-const Challange = mongoose.model('Challange',ChallangeSchema);
+const Pergunta = mongoose.model('Pergunta',PerguntaSchema);
 
-module.exports = Challange;
+module.exports = Pergunta;

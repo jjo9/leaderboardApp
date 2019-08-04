@@ -20,7 +20,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const User = require('../models/User');
 
 // Challange model
-const Challange = require('../models/Challange');
+const Pergunta = require('../models/Pergunta');
 
 router.get('/', (req,res) => res.render('main'));
 
@@ -138,7 +138,7 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 
 router.get('/findChallenges',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.body.username);
-    Challange.find((err,tabela) => { 
+    Pergunta.find((err,tabela) => { 
       if(err){
           next(err);
       } else {
