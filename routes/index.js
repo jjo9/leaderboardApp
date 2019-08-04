@@ -136,9 +136,20 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 
 // encontrar Todos os Challanges
 
-router.get('/findChallenges',urlencodedParser ,function(req,res,next) {
-    //console.log("username: "+req.body.username);
-    Pergunta.find((err,tabela) => { 
+router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(req,res,next) {
+    console.log("tipo de procura: "+req.params.searchType);
+    console.log("procura: "+req.params.searchText);
+    queryType = {};
+    if(req.params.searchType === "Categoria"){
+        queryType = {Categoria:req.params.searchText};
+    }else if(req.params.searchType === "Dificuldade"){
+        queryType = {Dificuldade:req.params.searchText};
+    }else if(req.params.searchType === "Pontos"){
+        
+    }else if(req.params.searchType === "usersQueResolveram"){
+
+    }
+    Pergunta.find(queryType,(err,tabela) => { 
       if(err){
           next(err);
       } else {
