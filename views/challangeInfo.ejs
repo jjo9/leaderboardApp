@@ -68,7 +68,27 @@
   </div>
 </div>
 
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <button type="button" class="btn btn-info">Pontos (mas vai estar ligado à dificuladade.. este se calhar tiro...)</button>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+      <a class="dropdown-item" href="#">Pontuação alta</a>
+      <a class="dropdown-item" href="#">Pontuação baixa</a>
+    </div>
+  </div>
+</div>
 
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <button type="button" class="btn btn-info">Número de Resoluções</button>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+      <a class="dropdown-item" href="#">Alta taxa de resolução</a>
+      <a class="dropdown-item" href="#">Baixa taxa de resolução</a>
+    </div>
+  </div>
+</div>
 <% if ( tabela.length == 0 ){ %>
   <h2>O challange não foi encontrado</h2>
 <% } else { %>
