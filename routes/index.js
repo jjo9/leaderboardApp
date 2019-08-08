@@ -145,9 +145,9 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
     }else if(req.params.searchType === "Dificuldade"){
         queryType = {Dificuldade:req.params.searchText};
     }else if(req.params.searchType === "Pontos"){
-        
+        queryType = {Pontos:req.params.searchText};
     }else if(req.params.searchType === "usersQueResolveram"){
-
+        //queryType = {:req.params.searchText};
     }
     Pergunta.find(queryType,(err,tabela) => { 
       if(err){
