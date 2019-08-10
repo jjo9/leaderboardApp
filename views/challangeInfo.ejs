@@ -1,10 +1,16 @@
 <head>
 <style>
 
-
 .since {
   float:right;
 } 
+
+.hint_B{
+  background-color:white;
+  border-radius: 25px;
+  text-align: center;
+}
+
 </style>
 </head>
 
@@ -128,7 +134,7 @@
   <p><%= tabela[i].hint %></p>  
   <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
   <% var demoNum = String("demo"+i) ; %>
-  <p id= "<%= demoNum %>" ></p>
+  <div class="hint_B"><p id= "<%= demoNum %>" ></p></div>
   <script>
   function myFunction<%= i %>() {
     document.getElementById("<%= demoNum %>").innerHTML = "<%= tabela[i].hint %>";
@@ -136,8 +142,15 @@
   </script>
   <p>Flag que não vou mostrar: <%= tabela[i].Flag %></p>
   <p><%= tabela[i].Pontos %></p>
-  <p><%= tabela[i].Autor %></p>  
-  <p><%= tabela[i].usersQueResolveram.length %></p>
+  <p>Made by: <%= tabela[i].Autor %></p>  
+  <form class="form-inline my-2 my-lg-0"  action="/findUser/" method="POST">
+    <input class="form-control mr-sm-2" id="username" name="username" type="text" placeholder="Search User">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
+  </form>
+  <h1>mas eu não quero mostrar emails por isso faço isto com ids ???? posso fazer query id -> username
+  ..... adicionalmente ponho as cenas todas de gravar na BD com o email ou com o _id ???</h1>
+  <footer class="blockquote-footer">Made By: <cite title="Source Title"><%= tabela[i].Autor %></cite></footer>
+  <button class="btn btn-info" href="/findUser/<%= tabela[i].Autor %>" ><%= tabela[i].Autor %></button>
 
   <% if( tabela[i].usersQueResolveram.length != 0){ %>
   <h1>ponho para ver os users que resolveram num link à parte ou apresento aqui ??</h1>

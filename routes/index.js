@@ -120,7 +120,16 @@ router.get('/findAllUsers',urlencodedParser ,function(req,res,next) {
 
 router.post('/findUser',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.body.username);
-    User.find({username:req.body.username},(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+
+    // por aqui um OR para poder encontrar o user por _ID
+
+    if (req.body.username.match(/^[0-9a-fA-F]{24}$/)) {
+        var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] }
+    }else{
+        var que = {username:req.body.username}
+    }
+    // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
       if(err){
           next(err);
       } else {
