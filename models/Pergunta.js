@@ -9,7 +9,23 @@ const PerguntaSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Desafio:{
+    Dificuldade:{
+        type: Number,
+        required: true
+    },
+    Recursos:{
+        type: String,
+        required: true
+    },
+    DesafioTitulo:{
+        type: String,
+        required: true
+    },
+    DesafioDescricao:{
+        type: String,
+        required: true
+    },
+    hint:{
         type: String,
         required: true
     },
@@ -25,21 +41,14 @@ const PerguntaSchema = new mongoose.Schema({
         type: Array,
         "default": [] 
     },
+    Autor:{
+        type: String,
+        required: true
+    },
     dataCriacao:{
         type: Date
     }
-});         // acabar isto depois !!!
-/*
-    # Schema dos desafios
-    mydict = {"IDdesafio": idDesafio,  # inteiro
-              "Categoria": categoria,  # string
-              "Desafio": desafio,
-              "Flag": flag,  # para já vo trabalhar só com este
-              "Pontos": pontos,  # este implemento lá para o fim ... # inteiro
-              "usersQueResolveram": [],
-              "dataCriacao": datetime.datetime.utcnow()
-              }
-} */
+});     
 
 const Pergunta = mongoose.model('Pergunta',PerguntaSchema);
 
