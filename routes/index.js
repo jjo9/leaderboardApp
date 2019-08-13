@@ -149,6 +149,8 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
     console.log("tipo de procura: "+req.params.searchType);
     console.log("procura: "+req.params.searchText);
     queryType = {};
+    var numSort = 1;
+    var sort = {};
     if(req.params.searchType === "Categoria"){
         queryType = {Categoria:req.params.searchText};
     }else if(req.params.searchType === "Dificuldade"){
@@ -157,8 +159,20 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
         queryType = {Pontos:req.params.searchText};
     }else if(req.params.searchType === "usersQueResolveram"){
         //queryType = {:req.params.searchText};
+        if(req.params.searchText === "Baixo"){
+            numSort = -1;
+        }else{
+            numSort = 1;
+        }
+        sort = { "dataCriacao" : numSort };
     }else if(req.params.searchType === "Data"){
         //queryType = {:req.params.searchText};
+        if(req.params.searchText === "Antigo"){
+            numSort = -1;
+        }else{
+            numSort = 1;
+        }
+        sort = { "dataCriacao" : numSort };
     }
     Pergunta.find(queryType,(err,tabela) => { 
       if(err){
@@ -169,7 +183,7 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
               tabela
           });
       }
-  });
+  }).sort(sort);
   
 });
 
