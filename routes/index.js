@@ -159,12 +159,13 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
         queryType = {Pontos:req.params.searchText};
     }else if(req.params.searchType === "usersQueResolveram"){
         //queryType = {:req.params.searchText};
+        // rework para ter o size como var e assim é mais facil
         if(req.params.searchText === "Baixo"){
-            numSort = -1;
+            numSort =  { $size: 2 };
         }else{
             numSort = 1;
         }
-        sort = { "dataCriacao" : numSort };
+        sort = { "usersQueResolveram" : numSort };
     }else if(req.params.searchType === "Data"){
         //queryType = {:req.params.searchText};
         if(req.params.searchText === "Antigo"){
