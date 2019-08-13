@@ -156,16 +156,21 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
     }else if(req.params.searchType === "Dificuldade"){
         queryType = {Dificuldade:req.params.searchText};
     }else if(req.params.searchType === "Pontos"){
-        queryType = {Pontos:req.params.searchText};
-    }else if(req.params.searchType === "usersQueResolveram"){
-        //queryType = {:req.params.searchText};
-        // rework para ter o size como var e assim é mais facil
-        if(req.params.searchText === "Baixo"){
-            numSort =  { $size: 2 };
+        // queryType = {Pontos:req.params.searchText};
+        if(req.params.searchText === "Alta"){
+            numSort = -1;
         }else{
             numSort = 1;
         }
-        sort = { "usersQueResolveram" : numSort };
+        sort = { "Pontos" : numSort };
+    }else if(req.params.searchType === "usersQueResolveram"){
+        //queryType = {:req.params.searchText};
+        if(req.params.searchText === "Alta"){
+            numSort = -1;
+        }else{
+            numSort = 1;
+        }
+        sort = { "usersQueResolveram_size" : numSort };
     }else if(req.params.searchType === "Data"){
         //queryType = {:req.params.searchText};
         if(req.params.searchText === "Antigo"){

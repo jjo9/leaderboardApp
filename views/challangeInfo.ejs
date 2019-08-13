@@ -131,10 +131,10 @@
 
   <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
 
-  <h4>Solvs: <%= tabela[i].usersQueResolveram.length %></h4>
+  <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
   <hr class="my-4">
   <p><%= tabela[i].IDdesafio %></p>
-  <p><%= tabela[i].Categoria %></p>
+  <p>Categoria: <%= tabela[i].Categoria %></p>
   <p>Dificuldade: <%= tabela[i].Dificuldade %></p>  
   <p>Recursos: <%= tabela[i].Recursos %></p>  
   <p>Titulo: <%= tabela[i].DesafioTitulo %></p>
@@ -161,7 +161,7 @@
   <footer class="blockquote-footer">Made By: <cite title="Source Title"><%= tabela[i].Autor %></cite></footer>
   <button class="btn btn-info" href="/findUser/<%= tabela[i].Autor %>" ><%= tabela[i].Autor %></button>
 
-  <% if( tabela[i].usersQueResolveram.length != 0){ %>
+  <% if( tabela[i].usersQueResolveram_size != 0){ %>
   <h1>ponho para ver os users que resolveram num link à parte ou apresento aqui ??</h1>
     <table class="table table-hover">
     <thead>
@@ -174,7 +174,7 @@
     <tbody>
   <% } %>
     
-  <% for( var ii = 0; ii < tabela[i].usersQueResolveram.length; ii++){ %>
+  <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
     <tr class="table-light">
       <th scope="row">#<%= ii +1 %></th>
       <td><%= tabela[i].usersQueResolveram[ii].userID %></td>

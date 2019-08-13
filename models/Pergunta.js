@@ -37,8 +37,14 @@ const PerguntaSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    usersQueResolveram_size:{
+        type: Number,
+        required: true,
+        "default": 0
+    },
     usersQueResolveram:{
         type: Array,
+        required: true,
         "default": [] 
     },
     Autor:{
@@ -46,6 +52,7 @@ const PerguntaSchema = new mongoose.Schema({
         required: true
     },
     dataCriacao:{
+        required: true,
         type: Date
     }
 });     
