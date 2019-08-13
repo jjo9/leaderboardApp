@@ -57,8 +57,16 @@
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/Categoria/Forense">Forense</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Exploit">Exploit</a>
+    
+      <a class="dropdown-item" href="/findChallenges/Categoria/Cryptography">Cryptography</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Steganography">Steganography</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Binary Analysis">Binary Analysis</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Reverse Engineering">Reverse Engineering</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Web Exploitation">Web Exploitation</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Forensics">Forensics</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Network">Network</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Malware Analysis">Malware Analysis</a>
+      <a class="dropdown-item" href="/findChallenges/Categoria/Misc">Misc</a>
     </div>
   </div>
 </div>
@@ -68,22 +76,22 @@
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="#">Level #1</a>
-      <a class="dropdown-item" href="#">Level #2</a>
-      <a class="dropdown-item" href="#">Level #3</a>
-      <a class="dropdown-item" href="#">Level #4</a>
-      <a class="dropdown-item" href="#">Level #5</a>
+      <a class="dropdown-item" href="/findChallenges/Dificuldade/1">Level #1</a>
+      <a class="dropdown-item" href="/findChallenges/Dificuldade/2">Level #2</a>
+      <a class="dropdown-item" href="/findChallenges/Dificuldade/3">Level #3</a>
+      <a class="dropdown-item" href="/findChallenges/Dificuldade/4">Level #4</a>
+      <a class="dropdown-item" href="/findChallenges/Dificuldade/5">Level #5</a>
     </div>
   </div>
 </div>
 
 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Pontos (mas vai estar ligado à dificuladade.. este se calhar tiro...)</button>
+  <button type="button" class="btn btn-info">Pontos</button>
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="#">Pontuação alta</a>
-      <a class="dropdown-item" href="#">Pontuação baixa</a>
+      <a class="dropdown-item" href="/findChallenges/Pontos/Alta">Pontuação alta</a>
+      <a class="dropdown-item" href="/findChallenges/Pontos/Baixa">Pontuação baixa</a>
     </div>
   </div>
 </div>
@@ -93,8 +101,8 @@
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="#">Alta taxa de resolução</a>
-      <a class="dropdown-item" href="#">Baixa taxa de resolução</a>
+      <a class="dropdown-item" href="/findChallenges/usersQueResolveram/Alta">Alta taxa de resolução</a>
+      <a class="dropdown-item" href="/findChallenges/usersQueResolveram/Baixa">Baixa taxa de resolução</a>
     </div>
   </div>
 </div>
@@ -104,8 +112,8 @@
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="#">Mais antigo</a>
-      <a class="dropdown-item" href="#">Mais recente</a>
+      <a class="dropdown-item" href="/findChallenges/Data/Antigo">Mais antigo</a>
+      <a class="dropdown-item" href="/findChallenges/Data/Recente">Mais recente</a>
     </div>
   </div>
 </div>
@@ -148,7 +156,8 @@
     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
   </form>
   <h1>mas eu não quero mostrar emails por isso faço isto com ids ???? posso fazer query id -> username
-  ..... adicionalmente ponho as cenas todas de gravar na BD com o email ou com o _id ???</h1>
+  ..... adicionalmente ponho as cenas todas de gravar na BD com o email ou com o _id ???
+  a duvida preciste posso fazer POST para id e sei a info do user no render. mas será que devo gravar as coisas com o _id em vez do email ????</h1> 
   <footer class="blockquote-footer">Made By: <cite title="Source Title"><%= tabela[i].Autor %></cite></footer>
   <button class="btn btn-info" href="/findUser/<%= tabela[i].Autor %>" ><%= tabela[i].Autor %></button>
 

@@ -157,6 +157,8 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
         queryType = {Pontos:req.params.searchText};
     }else if(req.params.searchType === "usersQueResolveram"){
         //queryType = {:req.params.searchText};
+    }else if(req.params.searchType === "Data"){
+        //queryType = {:req.params.searchText};
     }
     Pergunta.find(queryType,(err,tabela) => { 
       if(err){
