@@ -134,7 +134,7 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
           next(err);
       } else {
           console.log(tabela);
-          res.render('userInfo', {
+          res.render('userInfo', { // remover ctf{FLAG} antes de fazer render ????
               tabela
           });
       }
@@ -184,7 +184,8 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
       if(err){
           next(err);
       } else {
-          console.log(tabela);
+          console.log(tabela); // antes de fazer o render por o USERNAME EM vez do ID !
+          // ou acrescentar até que assim com o id vai direto para o findUsers!!!
           res.render('challangeInfo', {
               tabela
           });
