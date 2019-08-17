@@ -143,6 +143,19 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 });
 
 
+// id to username 
+async function id2username(ID, callback) { 
+    User.findById(ID,(err,tabela2) => {
+        //console.log(tabela2.username);
+        console.log("-------",tabela2.username);
+        if(tabela2.username != undefined){
+            return tabela2.username; 
+        }else{
+            return false;
+        }
+    }) ;
+ } 
+
 // encontrar Todos os Challanges
 
 router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(req,res,next) {
@@ -184,13 +197,37 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
       if(err){
           next(err);
       } else {
+        var uuu = [];
+
           console.log(tabela); // antes de fazer o render por o USERNAME EM vez do ID !
           // ou acrescentar até que assim com o id vai direto para o findUsers!!!
+          for(var i = 0;i < tabela.length;i++){
+            console.log(tabela[i].Autor);
+            var aaa = id2username(tabela[i].Autor);
+            //while(aaa == undefined){ isto faz com que o server fique parado ... para sempre o que é muito tempo...
+            // }
+            console.log("aaaaaa",aaa);
+            uuu.push(aaa);
+
+            //User.findById(tabela[i].Autor,(err,tabela2) => {
+                //console.log(tabela2.username);
+                //console.log(tabela[i]);
+                //uuu.push(tabela2.username);
+                //tabela[i].Autor2 = tabela2.username;
+                //console.log(uuu);
+            //}) ;
+          }
+          //console.log(uuu);
+          //console.log(tabela);
+          //Pergunta.findById()
+          
+          // aa = mycol.update_one(myquery, newvalues)
+          console.log("uuuuuu",uuu);
           res.render('challangeInfo', {
               tabela
           });
       }
-  }).sort(sort);
+  }).sort(sort).then(console.log("end thingy"));
   
 });
 
