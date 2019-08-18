@@ -124,6 +124,8 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 
     // por aqui um OR para poder encontrar o user por _ID
 
+    // TODO: remover white space do inicio e fim fazer isto também para o registar !!!!!!
+
     if (req.body.username.match(/^[0-9a-fA-F]{24}$/)) {
         var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] }
     }else{
@@ -202,33 +204,26 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
       if(err){
           next(err);
       } else {
-        var uuu = [];
+        //var uuu = [];
 
-          console.log(tabela); // antes de fazer o render por o USERNAME EM vez do ID !
-          // ou acrescentar até que assim com o id vai direto para o findUsers!!!
+          //console.log(tabela); // antes de fazer o render por o USERNAME EM vez do ID !
+          // ou acrescentar até que assim com o id vai direto para o findUsers!!! <- fiz este aqui !!
 
-          (async() => {
+          (async() => { // that async thing begin >>>>>>
             for(var i = 0;i < tabela.length;i++){
-                console.log(tabela[i].Autor);
-                var aaa = await id2username(tabela[i].Autor);
+                //console.log(tabela[i].Autor);
+                var aaa = await id2username(tabela[i].Autor); // podia juntalas mas faço isso depois !!
                 tabela[i].AutorUsername = aaa;
-                console.log("aaaaaa",aaa);
-                uuu.push(aaa);
+                //console.log("aaaaaa",aaa);
+                //uuu.push(aaa);
               }
-
-          console.log("uuuuuu2",uuu);
-          console.log("uuuuuu",uuu);
-        
 
           res.render('challangeInfo', {
               tabela
           });
 
+          })(); // that async thing ending <<<<<<
           
-
-          })();
-          
-
       }
   }).sort(sort).then(console.log("end thingy"));
   
