@@ -211,17 +211,24 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
             for(var i = 0;i < tabela.length;i++){
                 console.log(tabela[i].Autor);
                 var aaa = await id2username(tabela[i].Autor);
-                
+                tabela[i].AutorUsername = aaa;
                 console.log("aaaaaa",aaa);
                 uuu.push(aaa);
               }
-          })();
-          
 
+          console.log("uuuuuu2",uuu);
           console.log("uuuuuu",uuu);
+        
+
           res.render('challangeInfo', {
               tabela
           });
+
+          
+
+          })();
+          
+
       }
   }).sort(sort).then(console.log("end thingy"));
   

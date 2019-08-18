@@ -47,9 +47,14 @@ const PerguntaSchema = new mongoose.Schema({
         required: true,
         "default": [] 
     },
-    Autor:{
-        type: String,
+    Autor:{ // este vai ter o ID
+        type: String, 
         required: true
+    },
+    AutorUsername:{ // este vai ter o username mas só o vou buscar na altura da query, isto não está na base de dados
+        type: String,
+        required: false,
+        strict: false
     },
     dataCriacao:{
         required: true,

@@ -149,6 +149,8 @@
   <p>Recursos: <%= tabela[i].Recursos %></p>  
   <p>Titulo: <%= tabela[i].DesafioTitulo %></p>
   <p>Descrição: <%= tabela[i].DesafioDescricao %></p>  
+  <p>username do autor: <%= tabela[i].AutorUsername %></p>  
+  <p>mongoo _id do autor: <%= tabela[i].Autor %></p>  
   <p><%= tabela[i].hint %></p>  
   <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
   <% var demoNum = String("demo"+i) ; %>
@@ -162,7 +164,7 @@
   <p><%= tabela[i].Pontos %></p>
   
   <form action="/findUser/" method="post">
-    <button type="submit" name="username" value="<%= tabela[i].Autor %>" class="btn-link">Made by: <%= tabela[i].Autor %></button>
+    <button type="submit" name="username" value="<%= tabela[i].Autor %>" class="btn-link">Made by: <%= tabela[i].AutorUsername %></button>
   </form>
 
   <% if( tabela[i].usersQueResolveram_size != 0){ %>
