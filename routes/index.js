@@ -122,14 +122,10 @@ router.get('/findAllUsers',urlencodedParser ,function(req,res,next) {
 router.post('/findUser',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.body.username);
 
-    // por aqui um OR para poder encontrar o user por _ID
-
-    // TODO: remover white space do inicio e fim fazer isto também para o registar !!!!!!
-
     if (req.body.username.match(/^[0-9a-fA-F]{24}$/)) {
         var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] }
     }else{
-        var que = {username:req.body.username}
+        var que = {username:req.body.username.trim()}
     }
     // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
     User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
