@@ -142,6 +142,29 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 });
 
 
+// mostra perguntas enviadas / resolvidas de um determinado User
+
+router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.params.userId);
+    var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] };
+    console.log("aaaaaaaaaaaaaaaaaaaaaaa");
+    // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela.perguntasResolvidas);
+          console.log(tabela.perguntasEnviadas);
+          res.render('userInfo', { // remover ctf{FLAG} antes de fazer render ????
+              tabela
+          });
+      }
+  });
+  
+});
+
+
+
 // id to username 
 async function id2username(ID) { 
     return new Promise(function(resolve, reject) {

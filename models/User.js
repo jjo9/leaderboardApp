@@ -14,12 +14,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: 0.0
     },
-    perguntasResolvidas:{
+    perguntasResolvidas:{ // adiciono no futuro uma var a ver quantas perguntas resolvidas/enviadas têm ???
         type: Array,
+        required: true,
         "default": [] 
     },
     perguntasEnviadas:{
         type: Array,
+        required: true,
         "default": [] 
     },
     dataCriacao:{
