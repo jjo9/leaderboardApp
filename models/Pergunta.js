@@ -47,6 +47,16 @@ const PerguntaSchema = new mongoose.Schema({
         required: true,
         "default": [] 
     },
+    ratingVotes:{
+        type: Array,
+        required: true,
+        "default": [] 
+    },
+    ratingScore:{
+        type: Number,
+        required: true,
+        "default": 0
+    },
     Autor:{ // este vai ter o ID
         type: String, 
         required: true
