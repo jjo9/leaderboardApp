@@ -146,16 +146,17 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
 
 router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.params.userId);
-    var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] };
+    var que = { _id:req.params.userId };
     console.log("aaaaaaaaaaaaaaaaaaaaaaa");
     // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
     User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
       if(err){
           next(err);
       } else {
-          console.log(tabela.perguntasResolvidas);
-          console.log(tabela.perguntasEnviadas);
-          res.render('userInfo', { // remover ctf{FLAG} antes de fazer render ????
+          console.log(tabela[0].perguntasResolvidas);
+          console.log(tabela[0].perguntasEnviadas);
+          console.log(tabela);
+          res.render('userPerguntasInfoView', { // remover ctf{FLAG} antes de fazer render ????
               tabela
           });
       }
