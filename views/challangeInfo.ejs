@@ -1,6 +1,18 @@
 <head>
 <style>
 
+.tiny{
+  width: 200px;
+}
+
+.blueRating{
+  background-color:#065fd4;
+}
+
+.greyRating{
+  background-color:#cccccc;
+}
+
 .since {
   float:right;
 } 
@@ -153,6 +165,14 @@
   <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
 
   <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
+    <h2>Rating: <%= tabela[i].ratingScore %></h2>
+    <% var blueRating = 60; %>
+    <% var greyRating = 100 - blueRating; %>
+    <%  %>
+  <div class="progress tiny">
+    <div class="progress-bar blueRating" role="progressbar" style="width: <%= blueRating %>%" aria-valuenow="<%= blueRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar greyRating" role="progressbar" style="width: <%= greyRating %>%" aria-valuenow="<%= greyRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
 por aqui para ver como fica a cena de rating 
 ponho barra? e faço as contas
 azul e cinzento mais numeros por cima
