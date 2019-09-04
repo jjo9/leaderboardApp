@@ -52,7 +52,7 @@ const PerguntaSchema = new mongoose.Schema({
         required: true,
         "default": [] 
     },
-    ratingScore:{
+    ratingScore:{ // percentagem de "Yes" 
         type: Number,
         required: true,
         "default": 0

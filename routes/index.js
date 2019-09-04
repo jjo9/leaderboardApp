@@ -141,6 +141,25 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
   
 });
 
+// Ver lista completa de Users que resolveram um determinado desafio
+
+router.post('/listaCompletaUserQueResolveram',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.body.username);
+
+    var que = {IDdesafio:req.body.IDdesafio.trim()}
+
+    Pergunta.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela);
+          res.render('listaCompletaUserQueResolveram', { // remover ctf{FLAG} antes de fazer render ????
+              tabela
+          });
+      }
+  });
+  
+});
 
 // mostra perguntas enviadas / resolvidas de um determinado User
 
@@ -219,6 +238,14 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
             numSort = 1;
         }
         sort = { "dataCriacao" : numSort };
+    }else if(req.params.searchType === "Rating"){
+        //queryType = {:req.params.searchText};
+        if(req.params.searchText === "Alto"){
+            numSort = -1;
+        }else{
+            numSort = 1;
+        }
+        sort = { "ratingScore" : numSort };
     }
     Pergunta.find(queryType,(err,tabela) => { 
       if(err){

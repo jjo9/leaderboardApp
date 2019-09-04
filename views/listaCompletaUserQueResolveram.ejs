@@ -1,0 +1,162 @@
+<head>
+  <style>
+  
+  .tiny{
+    width: 200px;
+  }
+  
+  .blueRating{
+    background-color:#065fd4;
+  }
+  
+  .greyRating{
+    background-color:#cccccc;
+  }
+  
+  .since {
+    float:right;
+  } 
+  
+  .hint_B{
+    background-color:white;
+    border-radius: 25px;
+    text-align: center;
+  }
+  
+  .btn-link {
+      border: none;
+      outline: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      font-family: inherit;
+      font-size: inherit;
+  }
+  
+  </style>
+  </head>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">CTF_Site_Name</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features...</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/findChallenges/all/all">Challanges... (e mostra os desafios)<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/findAllUsers">User... (e mostra os users todos)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0"  action="/findUser/" method="POST">
+        <input class="form-control mr-sm-2" id="username" name="username" type="text" placeholder="Search User">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
+      </form>
+    </div>
+  </nav>
+  
+  
+  <h1>Todos os User que Resolveveram o Desafio</h1>
+  
+  
+  <% if ( tabela.length == 0 ){ %>
+    <h2>O challange não foi encontrado</h2>
+  <% } else { %>
+    <% for ( var i = 0;  i < tabela.length; i++) { %>
+  
+    <div class="jumbotron">
+    <h1 class="display-6" style="display: inline" ><strong>ID do desafio:</strong> <%= tabela[i].IDdesafio %></h1> 
+  
+    <% var options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
+    <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
+  
+    <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
+      <h2>Rating: <%= tabela[i].ratingScore %></h2>
+      <% var blueRating = tabela[i].ratingScore; %>
+      <% var greyRating = 100 - blueRating; %>
+      <%  %>
+    <div class="progress tiny">
+      <div class="progress-bar blueRating" role="progressbar" style="width: <%= blueRating %>%" aria-valuenow="<%= blueRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar greyRating" role="progressbar" style="width: <%= greyRating %>%" aria-valuenow="<%= greyRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  por aqui para ver como fica a cena de rating 
+  ponho barra? e faço as contas
+  azul e cinzento mais numeros por cima
+    <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
+    <hr class="my-4">
+    <p><%= tabela[i].IDdesafio %></p>
+    <p>Categoria: <%= tabela[i].Categoria %></p>
+    <p>Dificuldade: <%= tabela[i].Dificuldade %></p>  
+    <p>Recursos: <%= tabela[i].Recursos %></p>  
+    <p>Titulo: <%= tabela[i].DesafioTitulo %></p>
+    <p>Descrição: <%= tabela[i].DesafioDescricao %></p>  
+    <p>username do autor: <%= tabela[i].AutorUsername %></p>  
+    <p>mongoo _id do autor: <%= tabela[i].Autor %></p>  
+    
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Place:</th>
+          <th scope="col">User ID</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      
+    <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
+      <tr class="table-light">
+        <th scope="row">#<%= ii +1 %></th>
+        <td><%= tabela[i].usersQueResolveram[ii].userID %></td>
+        <td><%= tabela[i].usersQueResolveram[ii].data %></td>
+      </tr>
+    <% } %>
+    </tbody>
+  </table> 
+  
+  </div>
+    
+    <% } %>
+  
+  <% } %>
+  usar isto para poder fazer a implementação
+  https://github.com/edwardhotchkiss/mongoose-paginate
+  <div>
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#">&laquo;</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">5</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">&raquo;</a>
+      </li>
+    </ul>
+  </div>
+  
