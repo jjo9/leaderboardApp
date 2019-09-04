@@ -163,7 +163,7 @@
   <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
 
   <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
-    <h2>Rating: <%= tabela[i].ratingScore %></h2>
+    <h2>Rating: <%= tabela[i].ratingScore %> %</h2>
     <% var blueRating = tabela[i].ratingScore; %>
     <% var greyRating = 100 - blueRating; %>
     <%  %>
@@ -171,9 +171,7 @@
     <div class="progress-bar blueRating" role="progressbar" style="width: <%= blueRating %>%" aria-valuenow="<%= blueRating %>" aria-valuemin="0" aria-valuemax="100"></div>
     <div class="progress-bar greyRating" role="progressbar" style="width: <%= greyRating %>%" aria-valuenow="<%= greyRating %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
-por aqui para ver como fica a cena de rating 
-ponho barra? e faço as contas
-azul e cinzento mais numeros por cima
+
   <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
   <hr class="my-4">
   <p><%= tabela[i].IDdesafio %></p>
@@ -201,10 +199,6 @@ azul e cinzento mais numeros por cima
   </form>
 
   <% if( tabela[i].usersQueResolveram_size != 0){ %>
-  <h1>ponho para ver os users que resolveram num link à parte ou apresento aqui ??</h1>
-  <h2>ou ponho antes assim ? "TOP 5 users que resolveram"</h2>
-  <h3>link para ver lista completa</h3>
-  <h1>tambem tenho que trocar o id da tabela por nomes ... </h1>
 
   <form action="/listaCompletaUserQueResolveram/" method="post">
     <button type="submit" name="IDdesafio" value="<%= tabela[i].IDdesafio %>" class="btn-link">Ver lista completa de Users que resolveram</button>
@@ -220,6 +214,9 @@ azul e cinzento mais numeros por cima
     <tbody>
   <% } %>
   para so mostrar os 5 primeiros resultados
+  se tiver aquilo de vai-se ganhando menos pontos à medida que mais pessoas resolvem ponho também quantos pontos é que cada user que está na tabela ganhou
+  nota que também tenho que ter um certo limite até que _percentagem_ é que vou descer os pontos... isto claro se implementar a descida de pontos
+  # quando tiver mais que 5 pessoas que resolveram este desafio vejo se a condição realmente está bem feita
     <% if ( tabela[i].usersQueResolveram_size > 4 ){ %>
       <% var maxUsers = 5 %>
     <% }else{ %>
@@ -229,8 +226,12 @@ azul e cinzento mais numeros por cima
   <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
     <tr class="table-light">
       <th scope="row">#<%= ii +1 %></th>
-      <td><%= tabela[i].usersQueResolveram[ii].userID %></td>
-      <td><%= tabela[i].usersQueResolveram[ii].data %></td>
+      <td>
+        <form action="/findUser/" method="post">
+          <button type="submit" name="username" value="<%= tabela[i].usersQueResolveram[ii].userID %>" class="btn-link"><%= tabela[i].usersQueResolveram[ii].userID %></button>
+        </form>
+        </td>
+      <td><%= tabela[i].usersQueResolveram[ii].data.toLocaleString('pt-BR',options) %></td>
     </tr>
   <% } %>
   </tbody>

@@ -261,8 +261,10 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
                 //console.log(tabela[i].Autor);
                 var aaa = await id2username(tabela[i].Autor); // podia juntalas mas faço isso depois !!
                 tabela[i].AutorUsername = aaa;
-                //console.log("aaaaaa",aaa);
-                //uuu.push(aaa);
+                for(var ii = 0;ii < tabela[i].usersQueResolveram.length;ii++){
+                    var aaai = await id2username(tabela[i].usersQueResolveram[ii].userID);
+                    tabela[i].usersQueResolveram[ii].userID2 = aaai;
+                }
               }
 
           res.render('challangeInfo', {
