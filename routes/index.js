@@ -278,4 +278,11 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
   
 });
 
+// redireciona para a pagina que ensina a jogar
+
+router.get('/how2play',function(req,res,next) {
+    res.render('how2play');
+})
+  
+
 module.exports = router;
