@@ -283,6 +283,9 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
 router.get('/how2play',function(req,res,next) {
     res.render('how2play');
 })
-  
+
+router.get('/guideLines',function(req,res,next) {
+    res.render('guideLines');
+})
 
 module.exports = router;
