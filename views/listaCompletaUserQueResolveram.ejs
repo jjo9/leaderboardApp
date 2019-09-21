@@ -93,9 +93,6 @@
       <div class="progress-bar blueRating" role="progressbar" style="width: <%= blueRating %>%" aria-valuenow="<%= blueRating %>" aria-valuemin="0" aria-valuemax="100"></div>
       <div class="progress-bar greyRating" role="progressbar" style="width: <%= greyRating %>%" aria-valuenow="<%= greyRating %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-  por aqui para ver como fica a cena de rating 
-  ponho barra? e faço as contas
-  azul e cinzento mais numeros por cima
     <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
     <hr class="my-4">
     <p><%= tabela[i].IDdesafio %></p>
@@ -117,13 +114,17 @@
       </thead>
       <tbody>
               
-    <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
-      <tr class="table-light">
-        <th scope="row">#<%= ii +1 %></th>
-        <td><%= tabela[i].usersQueResolveram[ii].userID %></td>
-        <td><%= tabela[i].usersQueResolveram[ii].data %></td>
-      </tr>
-    <% } %>
+        <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
+          <tr class="table-light">
+            <th scope="row">#<%= ii +1 %></th>
+            <td>
+              <form action="/findUser/" method="post">
+                <button type="submit" name="username" value="<%= tabela[i].usersQueResolveram[ii].userID %>" class="btn-link"><%= tabela[i].usersQueResolveram[ii].userID2 %></button>
+              </form>
+              </td>
+            <td><%= tabela[i].usersQueResolveram[ii].data.toLocaleString('pt-BR',options) %></td>
+          </tr>
+        <% } %>
     </tbody>
   </table> 
   

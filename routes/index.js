@@ -152,16 +152,53 @@ router.post('/listaCompletaUserQueResolveram',urlencodedParser ,function(req,res
       if(err){
           next(err);
       } else {
-          console.log(tabela);
-          res.render('listaCompletaUserQueResolveram', { // remover ctf{FLAG} antes de fazer render ????
+        (async() => { // that async thing begin >>>>>>
+            for(var i = 0;i < tabela.length;i++){
+                //console.log(tabela[i].Autor);
+                var aaa = await id2username(tabela[i].Autor); // podia juntalas mas faço isso depois !!
+                tabela[i].AutorUsername = aaa;
+                for(var ii = 0;ii < tabela[i].usersQueResolveram.length;ii++){
+                    var aaai = await id2username(tabela[i].usersQueResolveram[ii].userID);
+                    console.log(">>>",aaai);
+                    tabela[i].usersQueResolveram[ii].userID2 = aaai;
+                }
+              }
+
+          res.render('listaCompletaUserQueResolveram', {
               tabela
           });
+
+          })(); // that async thing ending <<<<<<
+
+          // console.log(tabela);
+          // res.render('listaCompletaUserQueResolveram', { // remover ctf{FLAG} antes de fazer render ????
+          //     tabela
+          // });
       }
   });
   
+
+
+
 });
 
 // mostra perguntas enviadas / resolvidas de um determinado User
+
+// id to perguntaTitulo
+async function id2perguntaTitulo(ID) {    // tenh que deixar o user procurar por pergunta ?? primeiro tenho que o por a ver o titulo das perguntas
+    return new Promise(function(resolve, reject) {
+        Pergunta.findById(ID,(err,tabela2) => {
+            //console.log(tabela2.username);
+            //console.log("-------",tabela2.DesafioTitulo);
+            if(tabela2.DesafioTitulo != undefined){
+                resolve(tabela2.DesafioTitulo);
+            }else{
+                resolve(false);
+            }
+        });
+    })
+ } 
+
 
 router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.params.userId);
@@ -175,6 +212,22 @@ router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function
           console.log(tabela[0].perguntasResolvidas);
           console.log(tabela[0].perguntasEnviadas);
           console.log(tabela);
+
+          (async() => { // that async thing begin >>>>>>
+            for(var i = 0;i < tabela.length;i++){
+                for(var ii = 0;ii < tabela[i].perguntasResolvidas.length;ii++){
+                    var aaai = await id2perguntaTitulo(tabela[i].perguntasResolvidas[ii].perguntaID2);
+                    console.log(">>>",aaai);
+                    tabela[i].perguntasResolvidas[ii].perguntaID2 = aaai;
+                }
+              }
+
+          res.render('challangeInfo', {
+              tabela
+          });
+
+          })(); // that async thing ending <<<<<<
+
           res.render('userPerguntasInfoView', { // remover ctf{FLAG} antes de fazer render ????
               tabela
           });
@@ -191,15 +244,13 @@ async function id2username(ID) {
         User.findById(ID,(err,tabela2) => {
             //console.log(tabela2.username);
             console.log("-------",tabela2.username);
-            if(tabela2.username != undefined){
+            if(tabela2.username != undefined && tabela2.username != null){
                 resolve(tabela2.username);
             }else{
                 resolve(false);
             }
         });
     })
-
-    
  } 
 
 // encontrar Todos os Challanges
@@ -263,6 +314,7 @@ router.get('/findChallenges/:searchType/:searchText',urlencodedParser ,function(
                 tabela[i].AutorUsername = aaa;
                 for(var ii = 0;ii < tabela[i].usersQueResolveram.length;ii++){
                     var aaai = await id2username(tabela[i].usersQueResolveram[ii].userID);
+                    console.log(">>>",aaai);
                     tabela[i].usersQueResolveram[ii].userID2 = aaai;
                 }
               }
