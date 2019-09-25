@@ -190,11 +190,16 @@ async function id2perguntaTitulo(ID) {    // tenh que deixar o user procurar por
         Pergunta.findById(ID,(err,tabela2) => {
             //console.log(tabela2.username);
             //console.log("-------",tabela2.DesafioTitulo);
-            if(tabela2.DesafioTitulo != undefined){
-                resolve(tabela2.DesafioTitulo);
+            if(tabela2 != null){
+                if(tabela2.DesafioTitulo != undefined){
+                    resolve(tabela2.DesafioTitulo);
+                }else{
+                    resolve(false);
+                }
             }else{
                 resolve(false);
             }
+            
         });
     })
  } 
@@ -211,16 +216,25 @@ router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function
       } else {
           console.log(tabela[0].perguntasResolvidas);
           console.log(tabela[0].perguntasEnviadas);
-          console.log(tabela);
+          console.log("tabela...",tabela);
 
+          
+            console.log(tabela[0].perguntasResolvidas[ii]);
+            for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
+                console.log("ccccccccc",tabela[0].perguntasResolvidas[ii].perguntaID);
+                //console.log(">><<<<<>",aaai);
+            }
+          
           (async() => { // that async thing begin >>>>>>
-            for(var i = 0;i < tabela.length;i++){
-                for(var ii = 0;ii < tabela[i].perguntasResolvidas.length;ii++){
-                    var aaai = await id2perguntaTitulo(tabela[i].perguntasResolvidas[ii].perguntaID2);
-                    console.log(">>>",aaai);
-                    tabela[i].perguntasResolvidas[ii].perguntaID2 = aaai;
+            //for(var i = 0;i < tabela.length;i++){
+                console.log(tabela[0].perguntasResolvidas[ii]);
+                for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
+                    console.log(tabela[0].perguntasResolvidas[ii].perguntaID);
+                    var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
+                    console.log(">><<<<<>",tituloNovo);
+                    tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
                 }
-              }
+              //}
 
           res.render('challangeInfo', {
               tabela
@@ -228,9 +242,9 @@ router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function
 
           })(); // that async thing ending <<<<<<
 
-          res.render('userPerguntasInfoView', { // remover ctf{FLAG} antes de fazer render ????
-              tabela
-          });
+          //res.render('userPerguntasInfoView', { // remover ctf{FLAG} antes de fazer render ????
+          //    tabela
+         // });
       }
   });
   
