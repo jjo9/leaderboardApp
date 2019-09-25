@@ -68,107 +68,86 @@
   </div>
 </nav>
 
-
-<h1>Challange Info</h1>
-
-<blockquote class="blockquote">
-  <p class="mb-0">Procurar por:</p>
-</blockquote>
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Categoria</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-    
-      <a class="dropdown-item" href="/findChallenges/Categoria/Cryptography">Cryptography</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Steganography">Steganography</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Binary Analysis">Binary Analysis</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Reverse Engineering">Reverse Engineering</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Web Exploitation">Web Exploitation</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Forensics">Forensics</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Network">Network</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Malware Analysis">Malware Analysis</a>
-      <a class="dropdown-item" href="/findChallenges/Categoria/Misc">Misc</a>
-    </div>
-  </div>
-</div>
-
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Dificuldade</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/Dificuldade/1">Level #1</a>
-      <a class="dropdown-item" href="/findChallenges/Dificuldade/2">Level #2</a>
-      <a class="dropdown-item" href="/findChallenges/Dificuldade/3">Level #3</a>
-      <a class="dropdown-item" href="/findChallenges/Dificuldade/4">Level #4</a>
-      <a class="dropdown-item" href="/findChallenges/Dificuldade/5">Level #5</a>
-    </div>
-  </div>
-</div>
-
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Pontos</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/Pontos/Alta">Pontuação alta</a>
-      <a class="dropdown-item" href="/findChallenges/Pontos/Baixa">Pontuação baixa</a>
-    </div>
-  </div>
-</div>
-
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Número de Resoluções</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/usersQueResolveram/Alta">Alta taxa de resolução</a>
-      <a class="dropdown-item" href="/findChallenges/usersQueResolveram/Baixa">Baixa taxa de resolução</a>
-    </div>
-  </div>
-</div>
-
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Data de Criação</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/Data/Antigo">Mais antigo</a>
-      <a class="dropdown-item" href="/findChallenges/Data/Recente">Mais recente</a>
-    </div>
-  </div>
-</div>
-
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <button type="button" class="btn btn-info">Rating</button>
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-      <a class="dropdown-item" href="/findChallenges/Rating/Alto">Rating Alto</a>
-      <a class="dropdown-item" href="/findChallenges/Rating/Baixo">Rating Baixo</a>
-    </div>
-  </div>
-</div>
-
 <% if ( tabela.length == 0 ){ %>
   <h2>Challenges were not found</h2>
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
-    <h3>Perguntas resolvidas</h3>
-    
-      <% for( var ii = 0; ii < tabela[i].perguntasResolvidas.length; ii++){ %>
-        <tr class="table-light">
-          <th scope="row">#<%= ii +1 %></th>
-          <h1><%= tabela[i].perguntasResolvidas[ii].perguntaID2 %></h1>
-          <td>
-            <form action="/findUser/" method="post">
-              <button type="submit" name="username" value="<%= tabela[i].perguntasResolvidas[ii]._id %>" class="btn-link"><%= tabela[i].perguntasResolvidas[ii].perguntaID2 %></button>
-            </form>
-            </td>
-        </tr>
- 
+    <div class="jumbotron">
+      <h1 class="display-6" style="display: inline" ><strong>ID do desafio:</strong> <%= tabela[i].IDdesafio %></h1> 
+      <% var options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
+      <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
+      <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
+        <h2>Rating: <%= tabela[i].ratingScore %> %</h2>
+        <% var blueRating = tabela[i].ratingScore; %>
+        <% var greyRating = 100 - blueRating; %>
+        <%  %>
+      <div class="progress tiny">
+        <div class="progress-bar blueRating" role="progressbar" style="width: <%= blueRating %>%" aria-valuenow="<%= blueRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar greyRating" role="progressbar" style="width: <%= greyRating %>%" aria-valuenow="<%= greyRating %>" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
+      <hr class="my-4">
+      <p><%= tabela[i].IDdesafio %></p>
+      <p>Categoria: <%= tabela[i].Categoria %></p>
+      <p>Dificuldade: <%= tabela[i].Dificuldade %></p>  
+      <p>Recursos: <%= tabela[i].Recursos %></p>  
+      <p>Titulo: <%= tabela[i].DesafioTitulo %></p>
+      <p>Descrição: <%= tabela[i].DesafioDescricao %></p>  
+      <p>username do autor: <%= tabela[i].AutorUsername %></p>  
+      <p>mongoo _id do autor: <%= tabela[i].Autor %></p>  
+      <p><%= tabela[i].hint %></p>  
+      <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
+      <% var demoNum = String("demo"+i) ; %>
+      <div class="hint_B"><p id= "<%= demoNum %>" ></p></div>
+      <script>
+      function myFunction<%= i %>() {
+        document.getElementById("<%= demoNum %>").innerHTML = "<%= tabela[i].hint %>";
+      }
+      </script>
+      <p>Flag que não vou mostrar: <%= tabela[i].Flag %></p>
+      <p><%= tabela[i].Pontos %></p>
+      
+      <form action="/findUser/" method="post">
+        <button type="submit" name="username" value="<%= tabela[i].Autor %>" class="btn-link">Made by: <%= tabela[i].AutorUsername %></button>
+      </form>
+      <% if( tabela[i].usersQueResolveram_size != 0){ %>
+      <form action="/listaCompletaUserQueResolveram/" method="post">
+        <button type="submit" name="IDdesafio" value="<%= tabela[i].IDdesafio %>" class="btn-link">Ver lista completa de Users que resolveram</button>
+      </form>
+        <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Place:</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% } %>
+      para so mostrar os 5 primeiros resultados
+      se tiver aquilo de vai-se ganhando menos pontos à medida que mais pessoas resolvem ponho também quantos pontos é que cada user que está na tabela ganhou
+      nota que também tenho que ter um certo limite até que _percentagem_ é que vou descer os pontos... isto claro se implementar a descida de pontos
+      # quando tiver mais que 5 pessoas que resolveram este desafio vejo se a condição realmente está bem feita
+        <% if ( tabela[i].usersQueResolveram_size > 4 ){ %>
+          <% var maxUsers = 5 %>
+        <% }else{ %>
+          <% var maxUsers = tabela[i].usersQueResolveram_size %>
     <% } %>
+    <% for( var ii = 0; ii < tabela[i].usersQueResolveram_size; ii++){ %>
+    <tr class="table-light">
+      <th scope="row">#<%= ii +1 %></th>
+      <td>
+        <form action="/findUser/" method="post">
+          <button type="submit" name="username" value="<%= tabela[i].usersQueResolveram[ii].userID %>" class="btn-link"><%= tabela[i].usersQueResolveram[ii].userID2 %></button>
+        </form>
+        </td>
+      <td><%= tabela[i].usersQueResolveram[ii].data.toLocaleString('pt-BR',options) %></td>
+    </tr>
+  <% } %>
+</tbody>
+</table> 
+</div>
+  
   <% } %>
 <% } %>
 

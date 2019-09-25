@@ -141,6 +141,29 @@ router.post('/findUser',urlencodedParser ,function(req,res,next) {
   
 });
 
+// encontra desafios
+router.post('/findChallenge',urlencodedParser ,function(req,res,next) {
+    //console.log("username: "+req.body.username);
+
+    if (req.body.username.match(/^[0-9a-fA-F]{24}$/)) {
+        var que = { $or: [ { username:req.body.username}, {_id:req.body.username} ] }
+    }else{
+        var que = {username:req.body.username.trim()}
+    }
+    // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+    Pergunta.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+      if(err){
+          next(err);
+      } else {
+          console.log(tabela);
+          res.render('challangeInfo', { // remover ctf{FLAG} antes de fazer render ????
+              tabela
+          });
+      }
+  });
+  
+});
+
 // Ver lista completa de Users que resolveram um determinado desafio
 
 router.post('/listaCompletaUserQueResolveram',urlencodedParser ,function(req,res,next) {
@@ -208,37 +231,32 @@ async function id2perguntaTitulo(ID) {    // tenh que deixar o user procurar por
 router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.params.userId);
     var que = { _id:req.params.userId };
-    console.log("aaaaaaaaaaaaaaaaaaaaaaa");
+    //console.log("aaaaaaaaaaaaaaaaaaaaaaa");  
     // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
     User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
       if(err){
           next(err);
       } else {
-          console.log(tabela[0].perguntasResolvidas);
-          console.log(tabela[0].perguntasEnviadas);
-          console.log("tabela...",tabela);
-
-          
-            console.log(tabela[0].perguntasResolvidas[ii]);
-            for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
-                console.log("ccccccccc",tabela[0].perguntasResolvidas[ii].perguntaID);
-                //console.log(">><<<<<>",aaai);
-            }
           
           (async() => { // that async thing begin >>>>>>
             //for(var i = 0;i < tabela.length;i++){
-                console.log(tabela[0].perguntasResolvidas[ii]);
+                //console.log(tabela[0].perguntasResolvidas[ii]);
                 for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
-                    console.log(tabela[0].perguntasResolvidas[ii].perguntaID);
+                    //console.log(tabela[0].perguntasResolvidas[ii].perguntaID);
                     var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
-                    console.log(">><<<<<>",tituloNovo);
+                    //console.log(">><<<<<>",tituloNovo);
                     tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
                 }
               //}
-
-          res.render('challangeInfo', {
-              tabela
-          });
+        if(req.params.tipoPergunta == "perguntasResolvidas"){
+            res.render('challangeInfoRes', {
+                tabela
+            });
+        }else{
+          res.render('challangeInfoEnv', {
+            tabela
+        });
+        }
 
           })(); // that async thing ending <<<<<<
 

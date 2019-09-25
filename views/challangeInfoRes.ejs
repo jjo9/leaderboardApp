@@ -1,0 +1,121 @@
+<head>
+<style>
+
+.tiny{
+  width: 200px;
+}
+
+.blueRating{
+  background-color:#065fd4;
+}
+
+.greyRating{
+  background-color:#cccccc;
+}
+
+.since {
+  float:right;
+} 
+
+.hint_B{
+  background-color:white;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+</style>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">CTF_Site_Name</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/how2play">How to play</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/findChallenges/all/all">Challanges<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/findAllUsers">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0"  action="/findUser/" method="POST">
+      <input class="form-control mr-sm-2" id="username" name="username" type="text" placeholder="Search User">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
+    </form>
+  </div>
+</nav>
+
+<% if ( tabela.length == 0 ){ %>
+  <h2>Challenges were not found</h2>
+<% } else { %>
+  <% for ( var i = 0;  i < tabela.length; i++) { %>
+    <h3>Perguntas resolvidas</h3>
+      <% for( var ii = 0; ii < tabela[i].perguntasResolvidas.length; ii++){ %>
+        
+        <tr class="table-light">
+          <th scope="row">#<%= ii +1 %></th>
+          <% if( tabela[i].perguntasResolvidas[ii].perguntaID2 == false) { %>
+            <h5>Error: challenge not found</h5>
+            <% } else {%>
+          <td>
+            <form action="/findChallenge" method="post">
+              <button type="submit" name="username" value="<%= tabela[i].perguntasResolvidas[ii].perguntaID %>" class="btn-link"><%= tabela[i].perguntasResolvidas[ii].perguntaID2 %></button>
+            </form>
+            </td>
+            <% } %>
+        </tr>
+        
+    <% } %>
+  <% } %>
+<% } %>
+
+usar isto para poder fazer a implementação
+https://github.com/edwardhotchkiss/mongoose-paginate
+<div>
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&laquo;</a>
+    </li>
+    <li class="page-item active">
+      <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">4</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">5</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">&raquo;</a>
+    </li>
+  </ul>
+</div>
