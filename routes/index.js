@@ -155,10 +155,28 @@ router.post('/findChallenge',urlencodedParser ,function(req,res,next) {
       if(err){
           next(err);
       } else {
-          console.log(tabela);
-          res.render('challangeInfo', { // remover ctf{FLAG} antes de fazer render ????
+        (async() => { // that async thing begin >>>>>>
+            for(var i = 0;i < tabela.length;i++){
+                //console.log(tabela[i].Autor);
+                var aaa = await id2username(tabela[i].Autor); // podia juntalas mas faço isso depois !!
+                tabela[i].AutorUsername = aaa;
+                for(var ii = 0;ii < tabela[i].usersQueResolveram.length;ii++){
+                    var aaai = await id2username(tabela[i].usersQueResolveram[ii].userID);
+                    console.log(">>>",aaai);
+                    tabela[i].usersQueResolveram[ii].userID2 = aaai;
+                }
+              }
+
+          res.render('challangeInfo', {
               tabela
           });
+
+          })(); // that async thing ending <<<<<<
+
+          // console.log(tabela);
+          // res.render('challangeInfo', { // remover ctf{FLAG} antes de fazer render ????
+          //     tabela
+          // });
       }
   });
   
@@ -275,11 +293,15 @@ async function id2username(ID) {
     return new Promise(function(resolve, reject) {
         User.findById(ID,(err,tabela2) => {
             //console.log(tabela2.username);
-            console.log("-------",tabela2.username);
-            if(tabela2.username != undefined && tabela2.username != null){
-                resolve(tabela2.username);
-            }else{
+            //console.log("-------",tabela2.username);
+            if(tabela2 == undefined){
                 resolve(false);
+            }else{
+                if(tabela2.username != undefined && tabela2.username != null){
+                    resolve(tabela2.username);
+                }else{
+                    resolve(false);
+                }
             }
         });
     })
@@ -370,6 +392,12 @@ router.get('/how2play',function(req,res,next) {
 
 router.get('/guideLines',function(req,res,next) {
     res.render('guideLines');
+})
+
+// pagina sobre a historia do site ...
+
+router.get('/About',function(req,res,next) {
+    res.render('About');
 })
 
 module.exports = router;
