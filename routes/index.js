@@ -167,7 +167,7 @@ router.post('/findChallenge',urlencodedParser ,function(req,res,next) {
                 }
               }
 
-          res.render('challangeInfo', {
+          res.render('challangeInfoOne', {
               tabela
           });
 
