@@ -397,7 +397,7 @@ router.get('/guideLines',function(req,res,next) {
 // pagina sobre a historia do site ...
 
 router.get('/About',function(req,res,next) {
-    res.render('About');
+    res.render('about');
 })
 
 module.exports = router;
