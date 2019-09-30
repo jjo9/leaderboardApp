@@ -21,6 +21,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const app = express();
 const PORT = process.env.PORT || 8081;
 
+// ficheiros publicos como imagens
+app.use(express.static("public"));
+
 // EJS
 app.use(expressLayouts);
 app.set('view engine','ejs');

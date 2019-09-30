@@ -54,11 +54,8 @@
   <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
 
   <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].pontos %></span></font>
-
-
-  <p class="lead">não vou mostrar o emai porque fica escondido ...</p>
+  
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Perguntas Resolvidas
@@ -71,15 +68,6 @@
     <a href="/userPerguntasInfo/<%= tabela[i]._id%>/perguntasEnviadas">ver todos</a>
   </li>
 </ul>
-
- tabela[i].perguntasEnviadas.length()
-        <td><strong>perguntas Resolvidas:</strong> </td><br>
-        <td><strong>perguntas Enviadas:</strong> </td><br>
-        <td><strong>dataCriacao:</strong> <%= tabela[i].dataCriacao.toLocaleString() %></td><br>
-  
-<h2>depois tenho que fazer algo para ver as perguntas e respostas... ou faço um drop down (mas se forem muitas não dá jeito...)... posso encaminhar para outra pagina ?...
- posso por a mostra caixa e dá para fazer scroll ou vai de 5 em 5...</h2>
-
 </div>
   
   <% } %>
