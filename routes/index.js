@@ -24,7 +24,7 @@ const User = require('../models/User');
 const Pergunta = require('../models/Pergunta');
 
 router.get('/', (req,res) => res.render('main'));
-
+/* /// ----------------------------- descontinuado prque não vou usar isto vo fazer eu uma imagem
 router.get('/chartTesteHard', function(req,res,next) {
     
     var info = {
@@ -36,50 +36,57 @@ router.get('/chartTesteHard', function(req,res,next) {
     };
     res.render('chartTesteV1',info);  
 });
+*/
 
-router.get('/leaderBoardTesteHard', function(req,res,next) { 
-    var info = {
-        tabela:[
-            {nome:'jose@jose.com',
-            pontos:20},
-            {nome:'pedro@pedro.com',
-            pontos:10},
-            {nome:'martin@martin.com',
-            pontos:25},
-            {nome:'123@gmail.com',
-            pontos:30},
-            {nome:'marcos@martin.com',
-            pontos:5},
-            {nome:'silveira@martin.com',
-            pontos:0},
-            {nome:'david@martin.com',
-            pontos:0},
-            {nome:'mario@martin.com',
-            pontos:25},
-            {nome:'browser@martin.com',
-            pontos:25},
-            {nome:'peach@martin.com',
-            pontos:33}
-        ]
-    };
-    res.render('leaderTestV1',info);  
-});
 
 // Mongo class -------
 
-router.get('/leaderboardTesteMongo', function(req,res,next) {
-
-      User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+// leaderBoard Top 10
+router.get('/leaderboardTop10', function(req,res,next) {
+    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+        //console.log(tabela);
+        Pergunta.find((err,tabela2) => { // em vez de enviar tudo fazer query aqui !!
+        //console.log(tabela2);
+        pontosMaximos = 0;
+        for(var x = 0; x < tabela2.length ;x++){
+            //console.log(tabela2[x].Pontos);
+            pontosMaximos = pontosMaximos + tabela2[x].Pontos;
+        }
         if(err){
             next(err);
         } else {
-            res.render('leaderTestV1', {
-                tabela
+            res.render('leaderTop10', {
+                tabela,pontosMaximos
             });
         }
-    });
-    
+  })
+  
+  }).sort({ "pontos" : -1 }); 
 });
+
+// leaderBoard Global
+router.get('/leaderboardGlobal', function(req,res,next) {
+    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+        //console.log(tabela);
+        Pergunta.find((err,tabela2) => { // em vez de enviar tudo fazer query aqui !!
+        //console.log(tabela2);
+        pontosMaximos = 0;
+        for(var x = 0; x < tabela2.length ;x++){
+            //console.log(tabela2[x].Pontos);
+            pontosMaximos = pontosMaximos + tabela2[x].Pontos;
+        }
+        if(err){
+            next(err);
+        } else {
+            res.render('leaderGlobal', {
+                tabela,pontosMaximos
+            });
+        }
+  })
+  
+  }).sort({ "pontos" : -1 }); 
+});
+
 
 // novo modo de fazer querys, antes eu fazia com o ejs para ver o top 5 agora procuro no mongo apenas o top 5
 // mostra Top 10 Users
