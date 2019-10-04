@@ -1,3 +1,11 @@
+<style>
+  form {
+    display:inline;
+    margin:0px;
+    padding:0px;
+  }
+</style>
+<body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">CTF_Site_Name</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,8 +36,16 @@
     </form>
   </div>
 </nav>
+<br>
+<h2>LeaderBoards</h2>
 
-<h1>Main Page</h1>
+<form action="/leaderboardTop10">
+  <input class="btn btn-info" type="submit" value="See Top 10 LeaderBoard"/>
+</form>
+<form action="/leaderboardGlobal">
+  <input class="btn btn-info" type="submit" value="See Global LeaderBoard"/>
+</form>
+
 
 <h2>Top 5</h2>
 se ninguem do top5 tiver jogado nos ultimos 5 dias não aparece nada ...
@@ -37,11 +53,6 @@ se ninguem do top5 tiver jogado nos ultimos 5 dias não aparece nada ...
   <img src="/example1.png" alt="top5" style="width:90%">
 </a>
 
-
-<br><br>
-<a href="http://192.168.36.3:8081/leaderboardTop10">Top 10 LeaderBoard</a>
-<br><br>
-<a href="http://192.168.36.3:8081/leaderboardGlobal">Universal LeaderBoard</a>
 
 <p>pagina a dizer como usar a plataforma mais detalhadamente (TODO: estou aqui!!!!)</p>
 <p>guias de uso: mandar email e funcionalidades: (registar, rating, submeter desafio, resolver desafio)</p>
@@ -62,3 +73,4 @@ ver desafios criados (se tiver...) tenho que por isso no schema também
 <h1>limpar esta pagina e por aqui a imagem do Top 5</h1>
 
 adicionar body e assim
+</body>

@@ -52,10 +52,10 @@
         <a class="nav-link" href="/how2play">How to play</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/findChallenges/all/all">Challanges<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/findChallenges/all/all">Challenges<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="/findAllUsers">User</a>
+        <a class="nav-link" href="/findAllUsers">Users</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/About">About</a>
@@ -73,10 +73,10 @@
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
     <div class="jumbotron">
-      <h1 class="display-6" style="display: inline" ><strong>ID do desafio:</strong> <%= tabela[i].IDdesafio %></h1> 
+      <h1 class="display-6" style="display: inline" ><strong>Challenge Number:</strong> <%= tabela[i].IDdesafio %></h1> 
       <% var options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
-      <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
-      <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].Pontos %></span></font>
+      <h5 class="since">Created in: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
+      <font size="6"><span class="badge badge-pill badge-info">Score: <%= tabela[i].Pontos %></span></font>
         <h2>Rating: <%= tabela[i].ratingScore %> %</h2>
         <% var blueRating = tabela[i].ratingScore; %>
         <% var greyRating = 100 - blueRating; %>
@@ -88,13 +88,11 @@
       <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
       <hr class="my-4">
       <p><%= tabela[i].IDdesafio %></p>
-      <p>Categoria: <%= tabela[i].Categoria %></p>
-      <p>Dificuldade: <%= tabela[i].Dificuldade %></p>  
-      <p>Recursos: <%= tabela[i].Recursos %></p>  
-      <p>Titulo: <%= tabela[i].DesafioTitulo %></p>
-      <p>Descrição: <%= tabela[i].DesafioDescricao %></p>  
-      <p>username do autor: <%= tabela[i].AutorUsername %></p>  
-      <p>mongoo _id do autor: <%= tabela[i].Autor %></p>  
+      <p>Category: <%= tabela[i].Categoria %></p>
+      <p>Difficulty: <%= tabela[i].Dificuldade %></p>  
+      <p>Resources: <%= tabela[i].Recursos %></p>  
+      <p>Title: <%= tabela[i].DesafioTitulo %></p>
+      <p>Description: <%= tabela[i].DesafioDescricao %></p>  
       <p><%= tabela[i].hint %></p>  
       <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
       <% var demoNum = String("demo"+i) ; %>
@@ -104,30 +102,23 @@
         document.getElementById("<%= demoNum %>").innerHTML = "<%= tabela[i].hint %>";
       }
       </script>
-      <p>Flag que não vou mostrar: <%= tabela[i].Flag %></p>
-      <p><%= tabela[i].Pontos %></p>
-      
       <form action="/findUser/" method="post">
         <button type="submit" name="username" value="<%= tabela[i].Autor %>" class="btn-link">Made by: <%= tabela[i].AutorUsername %></button>
       </form>
       <% if( tabela[i].usersQueResolveram_size != 0){ %>
       <form action="/listaCompletaUserQueResolveram/" method="post">
-        <button type="submit" name="IDdesafio" value="<%= tabela[i].IDdesafio %>" class="btn-link">Ver lista completa de Users que resolveram</button>
+        <button type="submit" name="IDdesafio" value="<%= tabela[i].IDdesafio %>" class="btn-link">See full list of users that solved the challenge</button>
       </form>
         <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Place:</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Time</th>
+            <th scope="col">Username</th>
+            <th scope="col">Date</th>
           </tr>
         </thead>
         <tbody>
       <% } %>
-      para so mostrar os 5 primeiros resultados
-      se tiver aquilo de vai-se ganhando menos pontos à medida que mais pessoas resolvem ponho também quantos pontos é que cada user que está na tabela ganhou
-      nota que também tenho que ter um certo limite até que _percentagem_ é que vou descer os pontos... isto claro se implementar a descida de pontos
-      # quando tiver mais que 5 pessoas que resolveram este desafio vejo se a condição realmente está bem feita
         <% if ( tabela[i].usersQueResolveram_size > 4 ){ %>
           <% var maxUsers = 5 %>
         <% }else{ %>

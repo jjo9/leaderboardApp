@@ -23,7 +23,7 @@
         <a class="nav-link" href="/how2play">How to play</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/findChallenges/all/all">Challanges</a>
+        <a class="nav-link" href="/findChallenges/all/all">Challenges</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/findAllUsers">User<span class="sr-only">(current)</span></a>
@@ -43,7 +43,7 @@
 <h1>User Info</h1>
 
 <% if ( tabela.length == 0 ){ %>
-  <h2>O user não foi encontrado</h2>
+  <h2>User not found</h2>
 <% } else { %>
   <% for ( var i = 0;  i < tabela.length; i++) { %>
   <div class="jumbotron">
@@ -51,21 +51,21 @@
 
 <% var options = { year: 'numeric', month: 'long', day: 'numeric' }; %>
 
-  <h5 class="since">criado em: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
+  <h5 class="since">Created in: <%= tabela[i].dataCriacao.toLocaleString('pt-BR',options) %> </h5> <br>
 
-  <font size="6"><span class="badge badge-pill badge-info">Pontos: <%= tabela[i].pontos %></span></font>
+  <font size="6"><span class="badge badge-pill badge-info">Score: <%= tabela[i].pontos %></span></font>
   
   <hr class="my-4">
   <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    Perguntas Resolvidas
+    Challenges Solved
     <span class="badge badge-primary badge-pill"><%= tabela[i].perguntasResolvidas.length %></span>
-    <a href="/userPerguntasInfo/<%= tabela[i]._id%>/perguntasResolvidas">ver todos</a>
+    <a href="/userPerguntasInfo/<%= tabela[i]._id%>/perguntasResolvidas">See all</a>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    Perguntas Enviadas &ensp;
+    Challenges Sent &ensp;
     <span class="badge badge-primary badge-pill"><%= tabela[i].perguntasEnviadas.length %></span>
-    <a href="/userPerguntasInfo/<%= tabela[i]._id%>/perguntasEnviadas">ver todos</a>
+    <a href="/userPerguntasInfo/<%= tabela[i]._id%>/perguntasEnviadas">See all</a>
   </li>
 </ul>
 </div>
