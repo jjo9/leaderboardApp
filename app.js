@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 //Set up default mongoose connection
 //var mongoDB = 'mongodb://127.0.0.1/ctfUsers';
 
-// versão em que tenho que usar autenticação
-var mongoDB = 'mongodb://jose:umaPasswordMuitoBoa121@127.0.0.1/ctfUsers';
+// Mongo user that has access to database
+var mongoDB = 'mongodb://pedro:passwordBoa321@127.0.0.1/ctfUsers';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get the default connection
@@ -21,7 +21,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const app = express();
 const PORT = process.env.PORT || 8081;
 
-// ficheiros publicos como imagens
+// public files (images)
 app.use(express.static("public"));
 
 // EJS
