@@ -87,14 +87,13 @@
       </div>
       <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
       <hr class="my-4">
-      <p><%= tabela[i].IDdesafio %></p>
+      <p>Challenge Number: <%= tabela[i].IDdesafio %></p>
       <p>Category: <%= tabela[i].Categoria %></p>
       <p>Difficulty: <%= tabela[i].Dificuldade %></p>  
       <p>Resources: <%= tabela[i].Recursos %></p>  
       <p>Title: <%= tabela[i].DesafioTitulo %></p>
       <p>Description: <%= tabela[i].DesafioDescricao %></p>  
-      <p><%= tabela[i].hint %></p>  
-      <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
+      <button class="btn btn-info" onclick="myFunction<%= i %>()"> Show Hint</button>
       <% var demoNum = String("demo"+i) ; %>
       <div class="hint_B"><p id= "<%= demoNum %>" ></p></div>
       <script>
