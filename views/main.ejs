@@ -7,7 +7,7 @@
 </style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">CTF_Site_Name</a>
+  <a class="navbar-brand" href="/">CTF_BreakPoint</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,8 +37,13 @@
   </div>
 </nav>
 <br>
-<h2>LeaderBoards</h2>
 
+<h2>Welcome to CTF_BreakPoint</h2>
+<p>This is a platform made in mind for those people who want to learn more about Cybersecurity, by investing their time
+  in trying to solve CTF challenges that we and the community provide in this simples and accessible plataform. So enjoy some good hacking!
+</p>
+
+<h2>LeaderBoards</h2>
 <form action="/leaderboardTop10">
   <input class="btn btn-info" type="submit" value="See Top 10 LeaderBoard"/>
 </form>
@@ -46,31 +51,16 @@
   <input class="btn btn-info" type="submit" value="See Global LeaderBoard"/>
 </form>
 
-
-<p><h2>Top 5</h2></p>
-<!--se ninguem do top5 tiver jogado nos ultimos 5 dias não aparece nada ... -->
+<p><h2>Top 5 most active users</h2></p>
+<!--if no one plays in the last 5 days, there's no graphic information ... -->
 <a href="/example1.png">
   <img src="/example1.png" alt="top5" style="width:90%">
 </a>
 
 
-<p>pagina a dizer como usar a plataforma mais detalhadamente (TODO: estou aqui!!!!)</p>
-<p>guias de uso: mandar email e funcionalidades: (registar, rating, submeter desafio, resolver desafio)</p>
-<p>o registar tem só pode ter estes caracteres (caracteres) e não pode passar dos 20 caracteres </p>
+<!-- <a href="http://192.168.36.3:8081/leaderboardTesteMongo">Ir buscar info de um user especifico</a>
+devo ser capaz de:ver desafios resolvidos (quais + quantidade) e ver desafios criados (se tiver...) tenho que por isso no schema também-->
 
+<!-- <a href="http://192.168.36.3:8081/mongoNewQueryTeste">mongoNewQueryTeste</a> -->
 
-
-<br><br>
-<a href="http://192.168.36.3:8081/leaderboardTesteMongo">Ir buscar info de um user especifico</a>
-devo ser capaz de:
-ver desafios resolvidos (quais + quantidade)
-ver desafios criados (se tiver...) tenho que por isso no schema também
-
-
-<br><br>
-<a href="http://192.168.36.3:8081/mongoNewQueryTeste">mongoNewQueryTeste</a>
-
-<h1>limpar esta pagina e por aqui a imagem do Top 5</h1>
-
-adicionar body e assim
 </body>
