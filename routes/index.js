@@ -1,55 +1,36 @@
 const express = require('express');
 const router = express.Router();
-var Chart = require('chart.js'); // hahah no!
 
 var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
+//Mongo Connection
 var url = 'mongodb://localhost:27017/ctfUsers';
 
-// para poder acessar ao que é enviado dentro do POST
+// to get acess to the information sent inside POST
 var bodyParser = require('body-parser')
 // create application/json parser
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-//var async = require('async');
-
 // User model
 const User = require('../models/User');
 
-// Challange model
+// Challenge model
 const Pergunta = require('../models/Pergunta');
 
+//main page
 router.get('/', (req,res) => res.render('main'));
-/* /// ----------------------------- descontinuado prque não vou usar isto vo fazer eu uma imagem
-router.get('/chartTesteHard', function(req,res,next) {
-    
-    var info = {
-        telemoveis:[
-            {nomeMarca:'Xiaomi'},
-            {nomeMarca:'Apple'},
-            {nomeMarca:'Samsung'}
-        ]
-    };
-    res.render('chartTesteV1',info);  
-});
-*/
-
-
-// Mongo class -------
 
 // leaderBoard Top 10
 router.get('/leaderboardTop10', function(req,res,next) {
-    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
-        //console.log(tabela);
-        Pergunta.find((err,tabela2) => { // em vez de enviar tudo fazer query aqui !!
-        //console.log(tabela2);
+    User.find((err,tabela) => { 
+        Pergunta.find((err,tabela2) => { 
+        //Query
         pontosMaximos = 0;
         for(var x = 0; x < tabela2.length ;x++){
-            //console.log(tabela2[x].Pontos);
             pontosMaximos = pontosMaximos + tabela2[x].Pontos;
         }
         if(err){
@@ -59,20 +40,17 @@ router.get('/leaderboardTop10', function(req,res,next) {
                 tabela,pontosMaximos
             });
         }
-  })
-  
+    })  
   }).sort({ "pontos" : -1 }); 
 });
 
 // leaderBoard Global
 router.get('/leaderboardGlobal', function(req,res,next) {
-    User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
-        //console.log(tabela);
-        Pergunta.find((err,tabela2) => { // em vez de enviar tudo fazer query aqui !!
-        //console.log(tabela2);
+    User.find((err,tabela) => { 
+        Pergunta.find((err,tabela2) => { 
+        //Query
         pontosMaximos = 0;
         for(var x = 0; x < tabela2.length ;x++){
-            //console.log(tabela2[x].Pontos);
             pontosMaximos = pontosMaximos + tabela2[x].Pontos;
         }
         if(err){
@@ -82,8 +60,7 @@ router.get('/leaderboardGlobal', function(req,res,next) {
                 tabela,pontosMaximos
             });
         }
-  })
-  
+    })
   }).sort({ "pontos" : -1 }); 
 });
 
@@ -107,8 +84,7 @@ router.get('/mongoNewQueryTeste', function(req,res,next) {
   
 });
 
-// Mostra todos os Users
-
+// Shows all users
 router.get('/findAllUsers',urlencodedParser ,function(req,res,next) {
     //console.log("username: "+req.body.username);
     User.find((err,tabela) => { // em vez de enviar tudo fazer query aqui !!
