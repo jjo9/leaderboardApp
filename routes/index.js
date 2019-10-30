@@ -254,40 +254,38 @@ async function id2perguntaTitulo(ID) {    // tenh que deixar o user procurar por
 
 
 router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
-    //console.log("username: "+req.params.userId);
+
     var que = { _id:req.params.userId };
-    //console.log("aaaaaaaaaaaaaaaaaaaaaaa");  
-    // db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
-    User.find( que ,(err,tabela) => { // em vez de enviar tudo fazer query aqui !!
+    User.find( que ,(err,tabela) => {
       if(err){
           next(err);
       } else {
-          
           (async() => { // that async thing begin >>>>>>
-            //for(var i = 0;i < tabela.length;i++){
-                //console.log(tabela[0].perguntasResolvidas[ii]);
+
+            if(req.params.tipoPergunta == "perguntasResolvidas"){
                 for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
-                    //console.log(tabela[0].perguntasResolvidas[ii].perguntaID);
                     var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
-                    //console.log(">><<<<<>",tituloNovo);
                     tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
                 }
-              //}
-        if(req.params.tipoPergunta == "perguntasResolvidas"){
-            res.render('challangeInfoRes', {
-                tabela
-            });
-        }else{
-          res.render('challangeInfoEnv', {
-            tabela
-        });
-        }
+            }else{
+                for(var ii = 0;ii < tabela[0].perguntasEnviadas.length;ii++){
+                    var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasEnviadas[ii].perguntaID);
+                    tabela[0].perguntasEnviadas[ii].perguntaID2 = tituloNovo;
+                }
+            }
+
+            if(req.params.tipoPergunta == "perguntasResolvidas"){
+                res.render('challangeInfoRes', {
+                    tabela
+                });
+            }else{
+                res.render('challangeInfoEnv', {
+                    tabela
+                });
+            }
 
           })(); // that async thing ending <<<<<<
 
-          //res.render('userPerguntasInfoView', { // remover ctf{FLAG} antes de fazer render ????
-          //    tabela
-         // });
       }
   });
   
