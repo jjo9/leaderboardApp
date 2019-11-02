@@ -192,7 +192,7 @@ router.post('/listaCompletaUserQueResolveram', urlencodedParser, function (req, 
 
 //Show questions that have been sent/solved by a certain User
 // QuestionID
-async function id2perguntaTitulo(ID) {   
+async function id2perguntaTitulo(ID) {
     return new Promise(function (resolve, reject) {
         Pergunta.findById(ID, (err, tabela2) => {
             if (tabela2 != null) {
@@ -217,14 +217,27 @@ router.get('/userPerguntasInfo/:userId/:tipoPergunta', urlencodedParser, functio
             next(err);
         } else {
             (async () => { // async function begins here >>>>>>
-                //for(var i = 0;i < tabela.length;i++){
-                //console.log(tabela[0].perguntasResolvidas[ii]);
-                for (var ii = 0; ii < tabela[0].perguntasResolvidas.length; ii++) {
-                    //console.log(tabela[0].perguntasResolvidas[ii].perguntaID);
-                    var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
-                    tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
+                if (req.params.tipoPergunta == "perguntasResolvidas") {
+                    for (var ii = 0; ii < tabela[0].perguntasResolvidas.length; ii++) {
+                        var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
+                        tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
+                    }
+                    if (req.params.tipoPergunta == "perguntasResolvidas") {
+                        res.render('challangeInfoRes', {
+                            tabela
+                        });
+                    } else {
+                        res.render('challangeInfoEnv', {
+                            tabela
+                        });
+                    }
+                } else {
+                    for (var ii = 0; ii < tabela[0].perguntasEnviadas.length; ii++) {
+                        var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasEnviadas[ii].perguntaID);
+                        tabela[0].perguntasEnviadas[ii].perguntaID2 = tituloNovo;
+                    }
                 }
-                //}
+
                 if (req.params.tipoPergunta == "perguntasResolvidas") {
                     res.render('challangeInfoRes', {
                         tabela
