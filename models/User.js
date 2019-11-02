@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: 0.0
     },
-    perguntasResolvidas:{ // adiciono no futuro uma var a ver quantas perguntas resolvidas/enviadas têm ???
+    perguntasResolvidas:{ 
         type: Array,
         required: true,
         "default": [] 
@@ -27,7 +27,17 @@ const UserSchema = new mongoose.Schema({
     dataCriacao:{
         type: Date
     }
-});         // acabar isto depois !!!
+});       
+
+
+const User = mongoose.model('User',UserSchema);
+module.exports = User;
+
+
+
+
+//Testes:
+// acabar isto depois !!!
 /*
 mydict = {"username": username,
 "email": email,
@@ -39,7 +49,3 @@ mydict = {"username": username,
 
 // a DB do mongo ctfUsers
 // db.users.insert( { nome: "martin@martin.com", pontos: 35 } )
-
-const User = mongoose.model('User',UserSchema);
-
-module.exports = User;

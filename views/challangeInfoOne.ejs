@@ -38,7 +38,7 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">CTF_Site_Name</a>
+  <a class="navbar-brand" href="/">CTF_BreakPoint</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -87,14 +87,13 @@
       </div>
       <h4>Solvs: <%= tabela[i].usersQueResolveram_size %></h4>
       <hr class="my-4">
-      <p><%= tabela[i].IDdesafio %></p>
+      <p>Challenge Number: <%= tabela[i].IDdesafio %></p>
       <p>Category: <%= tabela[i].Categoria %></p>
       <p>Difficulty: <%= tabela[i].Dificuldade %></p>  
       <p>Resources: <%= tabela[i].Recursos %></p>  
       <p>Title: <%= tabela[i].DesafioTitulo %></p>
       <p>Description: <%= tabela[i].DesafioDescricao %></p>  
-      <p><%= tabela[i].hint %></p>  
-      <button class="btn btn-info" onclick="myFunction<%= i %>()">Hint</button>
+      <button class="btn btn-info" onclick="myFunction<%= i %>()"> Show Hint</button>
       <% var demoNum = String("demo"+i) ; %>
       <div class="hint_B"><p id= "<%= demoNum %>" ></p></div>
       <script>
@@ -141,9 +140,8 @@
   
   <% } %>
 <% } %>
-
-usar isto para poder fazer a implementação
-https://github.com/edwardhotchkiss/mongoose-paginate
+<br>
+<!-- usar isto para poder fazer a implementação: https://github.com/edwardhotchkiss/mongoose-paginate -->
 <div>
   <ul class="pagination">
     <li class="page-item disabled">

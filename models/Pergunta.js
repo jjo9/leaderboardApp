@@ -52,7 +52,7 @@ const PerguntaSchema = new mongoose.Schema({
         required: true,
         "default": [] 
     },
-    ratingScore:{ // percentagem de "Yes" 
+    ratingScore:{ // "Yes" for good rating, "No" for bad rating
         type: Number,
         required: true,
         "default": 0
@@ -61,7 +61,7 @@ const PerguntaSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
-    AutorUsername:{ // este vai ter o username mas só o vou buscar na altura da query, isto não está na base de dados
+    AutorUsername:{ // This will have the Username when the spefic query is done (this is not in the database)
         type: String,
         required: false,
         strict: false
@@ -73,5 +73,4 @@ const PerguntaSchema = new mongoose.Schema({
 });     
 
 const Pergunta = mongoose.model('Pergunta',PerguntaSchema);
-
 module.exports = Pergunta;
