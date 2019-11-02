@@ -206,50 +206,47 @@ async function id2perguntaTitulo(ID) {
             }
         });
     })
-}
 
-//Questions solved by a user
-router.get('/userPerguntasInfo/:userId/:tipoPergunta', urlencodedParser, function (req, res, next) {
-    var que = { _id: req.params.userId };
-    User.find(que, (err, tabela) => {
-        //Query
-        if (err) {
-            next(err);
-        } else {
-            (async () => { // async function begins here >>>>>>
-                if (req.params.tipoPergunta == "perguntasResolvidas") {
-                    for (var ii = 0; ii < tabela[0].perguntasResolvidas.length; ii++) {
-                        var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
-                        tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
-                    }
-                    if (req.params.tipoPergunta == "perguntasResolvidas") {
-                        res.render('challangeInfoRes', {
-                            tabela
-                        });
-                    } else {
-                        res.render('challangeInfoEnv', {
-                            tabela
-                        });
-                    }
-                } else {
-                    for (var ii = 0; ii < tabela[0].perguntasEnviadas.length; ii++) {
-                        var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasEnviadas[ii].perguntaID);
-                        tabela[0].perguntasEnviadas[ii].perguntaID2 = tituloNovo;
-                    }
-                }
+ } 
 
-                if (req.params.tipoPergunta == "perguntasResolvidas") {
-                    res.render('challangeInfoRes', {
-                        tabela
-                    });
-                } else {
-                    res.render('challangeInfoEnv', {
-                        tabela
-                    });
+
+router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
+
+    var que = { _id:req.params.userId };
+    User.find( que ,(err,tabela) => {
+      if(err){
+          next(err);
+      } else {
+          (async() => { // that async thing begin >>>>>>
+
+            if(req.params.tipoPergunta == "perguntasResolvidas"){
+                for(var ii = 0;ii < tabela[0].perguntasResolvidas.length;ii++){
+                    var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasResolvidas[ii].perguntaID);
+                    tabela[0].perguntasResolvidas[ii].perguntaID2 = tituloNovo;
                 }
-            })(); // async function ends here<<<<<<
-        }
-    });
+            }else{
+                for(var ii = 0;ii < tabela[0].perguntasEnviadas.length;ii++){
+                    var tituloNovo = await id2perguntaTitulo(tabela[0].perguntasEnviadas[ii].perguntaID);
+                    tabela[0].perguntasEnviadas[ii].perguntaID2 = tituloNovo;
+                }
+            }
+
+            if(req.params.tipoPergunta == "perguntasResolvidas"){
+                res.render('challangeInfoRes', {
+                    tabela
+                });
+            }else{
+                res.render('challangeInfoEnv', {
+                    tabela
+                });
+            }
+
+          })(); // that async thing ending <<<<<<
+
+      }
+  });
+  
+
 });
 
 // ID to Username 
