@@ -52,16 +52,19 @@ const PerguntaSchema = new mongoose.Schema({
         required: true,
         "default": [] 
     },
-    ratingScore:{ // "Yes" for good rating, "No" for bad rating
+    ratingScore:{
+        // "Yes" for good rating, "No" for bad rating 
         type: Number,
         required: true,
         "default": 0
     },
-    Autor:{ // este vai ter o ID
+    Autor:{ // This will save the ID
         type: String, 
         required: true
     },
-    AutorUsername:{ // This will have the Username when the spefic query is done (this is not in the database)
+    AutorUsername:{ 
+        // This will have the Username
+        //when the spefic query is done 
         type: String,
         required: false,
         strict: false
