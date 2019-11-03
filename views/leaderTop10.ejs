@@ -65,7 +65,8 @@
 <% } else { %>
   <% maxSize = tabela.length; %>
 <% } %>
-<% for ( var i = 0;  i < tabela.length; i++) { %>
+<!--variaveis acima nao devem estar funcionar, meti valor 10 no for e o top 10 já funcionou-->
+<% for ( var i = 0;  i < maxSize; i++) { %>
     <tr>
         <th scope="row"> # <%= i+1 %> </th>
         <td><%= tabela[i].username %></td>
