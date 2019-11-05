@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 //var mongoDB = 'mongodb://127.0.0.1/ctfUsers';
 
 // Mongo user that has access to database (users: jose/pedro)
-var mongoDB = 'mongodb://pedro:passwordBoa321@127.0.0.1/ctfUsers';
-//var mongoDB = 'mongodb://jose:umaPasswordMuitoBoa121@127.0.0.1/ctfUsers';
+//var mongoDB = 'mongodb://pedro:passwordBoa321@127.0.0.1/ctfUsers';
+var mongoDB = 'mongodb://jose:umaPasswordMuitoBoa121@127.0.0.1/ctfUsers';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get the default connection
