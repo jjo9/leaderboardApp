@@ -28,8 +28,6 @@ const UserSchema = new mongoose.Schema({
         type: Date
     }
 });       
-
-
 const User = mongoose.model('User',UserSchema);
 module.exports = User;
 

@@ -65,7 +65,7 @@
 <% } else { %>
   <% maxSize = tabela.length; %>
 <% } %>
-<% for ( var i = 0;  i < tabela.length; i++) { %>
+<% for ( var i = 0;  i < maxSize; i++) { %>
     <tr>
         <th scope="row"> # <%= i+1 %> </th>
         <td><%= tabela[i].username %></td>

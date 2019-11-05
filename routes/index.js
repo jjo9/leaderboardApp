@@ -190,8 +190,8 @@ router.post('/listaCompletaUserQueResolveram', urlencodedParser, function (req, 
 
 });
 
-//Show questions that have been sent/solved by a certain User
-// QuestionID
+
+// QuestionID to Question Title
 async function id2perguntaTitulo(ID) {
     return new Promise(function (resolve, reject) {
         Pergunta.findById(ID, (err, tabela2) => {
@@ -206,10 +206,9 @@ async function id2perguntaTitulo(ID) {
             }
         });
     })
-
  } 
 
-
+//Show questions that have been sent/solved by a certain User
 router.get('/userPerguntasInfo/:userId/:tipoPergunta',urlencodedParser ,function(req,res,next) {
 
     var que = { _id:req.params.userId };
@@ -314,16 +313,12 @@ router.get('/findChallenges/:searchType/:searchText', urlencodedParser, function
         if (err) {
             next(err);
         } else {
-            //console.log(tabela); // antes de fazer o render por o USERNAME EM vez do ID !
-            // ou acrescentar até que assim com o id vai direto para o findUsers!!! <- fiz este aqui !!
-            //The ID is switched to Username because the  
             (async () => { // async function begins here >>>>>>
                 for (var i = 0; i < tabela.length; i++) {
                     var aaa = await id2username(tabela[i].Autor);
                     tabela[i].AutorUsername = aaa;
                     for (var ii = 0; ii < tabela[i].usersQueResolveram.length; ii++) {
                         var aaai = await id2username(tabela[i].usersQueResolveram[ii].userID);
-                        console.log(">>>", aaai);
                         tabela[i].usersQueResolveram[ii].userID2 = aaai;
                     }
                 }
@@ -332,7 +327,7 @@ router.get('/findChallenges/:searchType/:searchText', urlencodedParser, function
                 });
             })(); // async function ends here <<<<<<
         }
-    }).sort(sort).then(console.log("end thingy"));
+    }).sort(sort).then(console.log("end"));
 });
 
 //Redirects to the page that teaches how to play in the platform
